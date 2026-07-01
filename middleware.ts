@@ -1,0 +1,1 @@
+export { supabaseMiddleware as middleware, config } from '@/lib/supabase/middleware'
