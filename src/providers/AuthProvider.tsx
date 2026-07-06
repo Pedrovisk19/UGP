@@ -10,8 +10,8 @@ interface AuthContextValue {
   user: User | null
   profile: Profile | null
   loading: boolean
+  profileLoading: boolean
   refreshProfile: () => Promise<Profile | null>
-  signOut: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
@@ -21,6 +21,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
+  const [profileLoading, setProfileLoading] = useState(false)
 
   const refreshProfile = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser()
@@ -28,12 +29,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setProfile(null)
       return null
     }
+    setProfileLoading(true)
     // maybeSingle() evita erro PGRST116 quando a row ainda não existe
     const { data, error } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', user.id)
       .maybeSingle()
+    setProfileLoading(false)
     if (error) {
       console.warn('refreshProfile: erro ao ler profile', error.message)
       setProfile(null)
@@ -70,15 +73,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [supabase, refreshProfile])
 
-  const signOut = useCallback(async () => {
-    await supabase.auth.signOut()
-    setSession(null)
-    setProfile(null)
-  }, [supabase])
-
   return (
     <AuthContext.Provider
-      value={{ session, user: session?.user ?? null, profile, loading, refreshProfile, signOut }}
+      value={{
+        session,
+        user: session?.user ?? null,
+        profile,
+        loading,
+        profileLoading,
+        refreshProfile,
+      }}
     >
       {children}
     </AuthContext.Provider>

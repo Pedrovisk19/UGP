@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { Menu, X, CheckCircle2, Circle, FolderGit2, ChevronDown, LogOut } from 'lucide-react'
 import { NAV_TREE, PROJECTS } from '@/lib/ugpContent'
 import { signOut } from '@/actions/auth.actions'
-import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import type { Profile } from '@/types/ugp.types'
 
@@ -18,7 +17,6 @@ export function MobileNav({
   user: Profile
 }) {
   const pathname = usePathname()
-  const router = useRouter()
   const [open, setOpen] = useState(false)
   const [groups, setGroups] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(NAV_TREE.map((g, i) => [g.label, i === 0]))
@@ -30,7 +28,6 @@ export function MobileNav({
 
   async function handleLogout() {
     await signOut()
-    router.push('/login')
   }
 
   return (

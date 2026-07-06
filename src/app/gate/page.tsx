@@ -9,7 +9,7 @@ import { useAuth } from '@/providers/AuthProvider'
 
 export default function GatePage() {
   const router = useRouter()
-  const { profile, refreshProfile } = useAuth()
+  const { refreshProfile } = useAuth()
   const [selecting, setSelecting] = useState<string | null>(null)
   const [hovered, setHovered] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)

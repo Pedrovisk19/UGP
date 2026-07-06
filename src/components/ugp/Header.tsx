@@ -2,7 +2,6 @@
 
 import { LogOut, Zap, Shield } from 'lucide-react'
 import { signOut } from '@/actions/auth.actions'
-import { useRouter } from 'next/navigation'
 import type { Profile } from '@/types/ugp.types'
 import { MobileNav } from './MobileNav'
 
@@ -13,13 +12,11 @@ interface HeaderProps {
 }
 
 export function Header({ user, progressPct, completedModules }: HeaderProps) {
-  const router = useRouter()
   const level = user.current_level || 'Extremo Iniciante'
   const xp = user.xp_points || 0
 
   async function handleLogout() {
     await signOut()
-    router.push('/login')
   }
 
   return (

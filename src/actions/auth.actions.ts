@@ -9,7 +9,7 @@ export async function signInWithEmail(email: string, password: string) {
   const { error } = await supabase.auth.signInWithPassword({ email, password })
   if (error) return { error: error.message }
   revalidatePath('/', 'layout')
-  redirect('/app')
+  redirect('/gate')
 }
 
 export async function signUpWithEmail(email: string, password: string) {
@@ -21,10 +21,9 @@ export async function signUpWithEmail(email: string, password: string) {
   })
   if (error) return { error: error.message }
 
-  // Caso 1: cadastro sem confirmação por email habilitada -> já loga direto
   if (data.session) {
     revalidatePath('/', 'layout')
-    redirect('/app')
+    redirect('/gate')
   }
 
   // Caso 2: usuário já existe e está confirmado -> Supabase retorna user mas sem session
@@ -45,7 +44,7 @@ export async function verifyOtp(email: string, token: string) {
   if (error) return { error: error.message }
   if (data.session) {
     revalidatePath('/', 'layout')
-    redirect('/app')
+    redirect('/gate')
   }
   return { error: 'OTP não gerou sessão. Tente novamente.' }
 }
@@ -78,7 +77,7 @@ export async function signInWithGoogle() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
-    options: { redirectTo: `${siteUrl}/app` },
+    options: { redirectTo: `${siteUrl}/auth/callback?next=/gate` },
   })
   if (error) return { error: error.message }
   return { url: data?.url }
@@ -88,7 +87,7 @@ export async function signOut() {
   const supabase = await createClient()
   await supabase.auth.signOut()
   revalidatePath('/', 'layout')
-  redirect('/login')
+  redirect('/')
 }
 
 export async function updateProfile(

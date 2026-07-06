@@ -17,7 +17,7 @@ interface UGPContextType {
 export const UGPContext = createContext<UGPContextType | null>(null)
 
 export function UGPProvider({ children }: { children: React.ReactNode }) {
-  const { profile, loading: authLoading, refreshProfile } = useAuth()
+  const { profile, loading: authLoading, profileLoading, refreshProfile } = useAuth()
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set())
   const router = useRouter()
   const supabase = createClient()
@@ -33,24 +33,16 @@ export function UGPProvider({ children }: { children: React.ReactNode }) {
   }, [supabase])
 
   useEffect(() => {
-    // Se ainda estamos carregando a sessão, espere.
-    if (authLoading) return
+    // Aguarda sessão e profile terminarem de carregar antes de decidir rota.
+    if (authLoading || profileLoading) return
 
-    // Sessão carregada mas profile é null → linha em `profiles` não existe
-    // (trigger handle_new_user provavelmente não produziu row).
-    // Redireciona para /gate, que vai fazer upsert e criar o profile.
-    if (!profile) {
-      router.push('/gate')
-      return
-    }
-
-    if (!profile.selected_trail) {
-      router.push('/gate')
+    if (!profile || !profile.selected_trail) {
+      router.replace('/gate')
       return
     }
 
     refreshModules()
-  }, [profile, authLoading, router, refreshModules])
+  }, [profile, authLoading, profileLoading, router, refreshModules])
 
   return (
     <UGPContext.Provider value={{ user: profile, refreshUser, completedModules, refreshModules }}>

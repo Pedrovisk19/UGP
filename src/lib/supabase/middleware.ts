@@ -1,6 +1,17 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+const PUBLIC_PATHS = [
+  '/',
+  '/login',
+  '/register',
+  '/forgot-password',
+  '/reset-password',
+  '/auth/callback',
+]
+
+const AUTH_PATHS = ['/login', '/register']
+
 export async function supabaseMiddleware(request: NextRequest) {
   let response = NextResponse.next({ request })
 
@@ -25,20 +36,31 @@ export async function supabaseMiddleware(request: NextRequest) {
     }
   )
 
-  const { data: { user } } = await supabase.auth.getUser()
+  // getUser() valida a sessão no servidor e dispara a renovação de cookies.
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
-  const publicPaths = ['/', '/login', '/register', '/forgot-password', '/reset-password', '/auth/callback']
-  const isPublic = publicPaths.includes(request.nextUrl.pathname)
+  const pathname = request.nextUrl.pathname
+  const isPublic = PUBLIC_PATHS.includes(pathname)
+  const isAuthRoute = AUTH_PATHS.includes(pathname)
 
+  // Usuário anônimo em rota privada → /login
   if (!user && !isPublic) {
-    return NextResponse.redirect(new URL('/login', request.url))
+    const url = request.nextUrl.clone()
+    url.pathname = '/login'
+    url.searchParams.set('redirect', pathname)
+    return NextResponse.redirect(url)
   }
 
-  if (
-    user &&
-    (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/register')
-  ) {
-    return NextResponse.redirect(new URL('/app', request.url))
+  // Usuário autenticado em /login ou /register → redireciona preservando cookies renovados
+  if (user && isAuthRoute) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/gate'
+    url.search = ''
+    const redirectResponse = NextResponse.redirect(url)
+    response.cookies.getAll().forEach((c) => redirectResponse.cookies.set(c.name, c.value))
+    return redirectResponse
   }
 
   return response

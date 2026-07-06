@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   Trail,
   Level,
   NavGroup,
@@ -6,19 +6,40 @@ import type {
   ContentArticle,
 } from '@/types/ugp.types'
 
+// Conteúdo markdown carregado via Webpack `asset/source`
+import manifestoMd from '@/content/manifesto.md'
+import arquiteturaMd from '@/content/arquitetura.md'
+import niveisMd from '@/content/niveis.md'
+import matrizMd from '@/content/matriz.md'
+import githubMd from '@/content/github.md'
+import docsAsCodeMd from '@/content/docs-as-code.md'
+import arquiteturaSoftwareMd from '@/content/arquitetura-software.md'
+import tddMd from '@/content/tdd.md'
+import fullstackMd from '@/content/fullstack.md'
+import portfolioMd from '@/content/portfolio.md'
+import primeiraVagaMd from '@/content/primeira-vaga.md'
+import livrosMd from '@/content/livros.md'
+import uxMd from '@/content/ux.md'
+import iaAplicadaMd from '@/content/ia-aplicada.md'
+import engenhariaPromptMd from '@/content/engenharia-prompt.md'
+import vibeCodingMd from '@/content/como-nao-fazer-vibe-coding.md'
+import boasPraticasIaMd from '@/content/boas-praticas-ia.md'
+import projetoIa1Md from '@/content/projeto-ia-1.md'
+import projetoIa2Md from '@/content/projeto-ia-2.md'
+
 // ── TRILHAS ──────────────────────────────────────────────────
 export const TRAILS: Trail[] = [
   {
     id: 'Dev Iniciante',
     name: 'Estou começando do zero',
-    tagline: 'Para quem nunca programou ou está nos primeiros meses. Começa pelo essencial e constrói os 10 projetosящих.',
+    tagline: 'Para quem nunca programou ou está nos primeiros meses. Começa pelo essencial e constrói os 10 projetos da trilha.',
     gradient: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
     glow: '0 0 60px -15px rgba(99,102,241,0.5)',
     border: 'rgba(99,102,241,0.4)',
   },
   {
     id: 'pleno',
-    name: ' TRILHA EM DESENVOLVIMENTO',
+    name: 'Já sei o básico, quero evoluir',
     tagline: 'Para quem já constrói coisas simples e quer solidificar fundamentos de engenharia de software.',
     gradient: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
     glow: '0 0 60px -15px rgba(139,92,246,0.5)',
@@ -26,8 +47,8 @@ export const TRAILS: Trail[] = [
   },
   {
     id: 'senior',
-    name: 'TRILHA EM DESENVOLVIMENTO',
-    tagline: 'Para devs com experiência prática que querem dominar arquitetura, TDD, docs-as-code e engenharia de elite.',
+    name: 'Sou dev e quero ir a fundo',
+    tagline: 'Para devs experientes que querem dominar arquitetura, TDD, docs-as-code e engenharia de elite.',
     gradient: 'linear-gradient(135deg, #10b981, #3b82f6)',
     glow: '0 0 60px -15px rgba(16,185,129,0.5)',
     border: 'rgba(16,185,129,0.4)',
@@ -93,7 +114,7 @@ export const LEVELS: Level[] = [
     name: 'Pleno 1',
     xp: 1000,
     knowledge: 'Arquitetura de software, padrões, separação de camadas, backend com Node.',
-    limitation: 'Ainda não escreve testes automatizados consistentes.',
+    limitation: 'Ainda não escreve testes automatizados consistentemente.',
     metric: 'Constrói um app fullstack com auth e banco de dados.',
     checklist: [
       'Criar API REST com Express ou Next API routes',
@@ -107,7 +128,7 @@ export const LEVELS: Level[] = [
     xp: 1600,
     knowledge: 'TDD, testes E2E, CI/CD, docs-as-code, observabilidade básica.',
     limitation: 'Ainda trata deploy como evento traumático.',
-    metric: 'Faz deploy automatizado com pipeline de testes.',
+    metric: 'Faz deploy automatizado com pipeline de testes passando.',
     checklist: [
       'Escrever testes unitários com Vitest/Jest',
       'Configurar pipeline no GitHub Actions',
@@ -123,7 +144,7 @@ export const LEVELS: Level[] = [
     metric: 'Desenha a arquitetura de um sistema em escala.',
     checklist: [
       'Entender filas e workers (Redis, RabbitMQ)',
-      'Modelar para đa_tenancy',
+      'Modelar para multi-tenancy',
       'Aplicar patterns de resiliência',
     ],
   },
@@ -132,7 +153,7 @@ export const LEVELS: Level[] = [
     name: 'Sênior',
     xp: 3500,
     knowledge: 'Engenharia de elite: arquitetura, decisões técnicas defensáveis, mentoria.',
-    limitation: 'Limites são narrativos — depende do contexto e do domínio.',
+    limitation: 'Limites são narrativos — dependem do contexto e do domínio.',
     metric: 'Lidera tecnicamente um produto do zero ao escalável.',
     checklist: [
       'Defender decisões técnicas com trade-offs claros',
@@ -177,6 +198,17 @@ export const NAV_TREE: NavGroup[] = [
     items: [
       { slug: 'roadmap', label: 'Roadmap de Estudos', isSpecial: true },
       { slug: 'cursos-gratuitos', label: 'Cursos Gratuitos', isSpecial: true },
+    ],
+  },
+  {
+    label: 'IA Aplicada',
+    items: [
+      { slug: 'ia-aplicada', label: 'IA Aplicada' },
+      { slug: 'engenharia-prompt', label: 'Engenharia de Prompt' },
+      { slug: 'como-nao-fazer-vibe-coding', label: 'Como NÃO Fazer Vibe Coding' },
+      { slug: 'boas-praticas-ia', label: 'Boas Práticas com IA' },
+      { slug: 'projeto-ia-1', label: 'Projeto IA 1' },
+      { slug: 'projeto-ia-2', label: 'Projeto IA 2' },
     ],
   },
 ]
@@ -534,7 +566,7 @@ export const TAG_STYLES: Record<string, string> = {
   Dashboard: 'ugp-tag ugp-badge-purple',
   Auth: 'ugp-tag ugp-badge-indigo',
   Mobile: 'ugp-tag ugp-badge-green',
-  Gráficos: 'ugp-tag ugp-badge-amber',
+  'Gráficos': 'ugp-tag ugp-badge-amber',
   Analytics: 'ugp-tag ugp-badge-purple',
   'Drag & Drop': 'ugp-tag ugp-badge-green',
 }
@@ -543,201 +575,32 @@ export function tagClass(tag: string) {
   return TAG_STYLES[tag] ?? 'ugp-tag ugp-badge-neutral'
 }
 
-// ── MÓDULOS NAVEGÁVEIS (sem matrix e sem especiais) ───────────
+// Módulos navegáveis (sem matrix e sem especiais) — usados para navegação sequencial
 export const SEQUENCABLE_MODULES = NAV_TREE.flatMap((g) =>
   g.items.filter((i) => !i.isMatrix && !i.isSpecial)
 )
 
-// ── CONTEÚDO (markdown bodies) ─────────────────────────────────
-const manifesto = `# Manifesto da UGP
-
-A **Universidade Gratuita do Programador** nasceu de uma convicção simples: o melhor caminho para se tornar um engenheiro de software de verdade é **construir software de verdade**.
-
-> Cursos ensinam sintaxe. Projetens ensinam engenharia.
-
-## Os três pilares
-
-1. **Projetos corporativos reais** — 10 desafios inspirados em problemas de empresas.
-2. **Progressão por níveis** — 8 níveis que mapeiam sua jornada do curioso ao sênior.
-3. **Conteúdo estático e denso** — só o que importa, sem ruído.
-
-## Por que gratuito?
-
-Porque o conhecimento essencial já está público hoje. O que falta é **estrutura, sequência e feedback**. A UGP provê a estrutura. O feedback vem de construir e quebrar código.`
-
-const arquitetura = `# Arquitetura da UGP
-
-A UGP é uma aplicação **fullstack** com frontend Next.js 15 e backend Supabase.
-
-## Camadas
-
-- **Frontend**: React 19 + Next.js App Router + Tailwind + shadcn/ui
-- **Auth + DB + Realtime**: Supabase (Postgres, RLS, Auth)
-- **Conteúdo**: 100% estático em \`src/lib/ugpContent.ts\`
-
-##Por que estático?
-
-O conteúdo não muda frequentemente. Manter em markdown/objeto mantém o deploy barato, build rápido e zero ruído operacional.`
-
-const niveis = `# Níveis de Progressão
-
-A UGP divide a jornada em 8 níveis, do Extremo Iniciante ao Sênior. Cada nível define:
-
-- **Conhecimento** que você tem
-- **Limitação** que você ainda enfrenta
-- **Métrica de saída** para considerar superado
-- **Checklist** de dominância
-
-Veja a matriz completa na página **Matriz**.`
-
-const github = `# GitHub para devs
-
-GitHub não é só hospedar código. É a sua carteira de trabalho técnica.
-
-## Essencial
-
-- **Commits** pequenos e frequentes
-- **Branches** com padrão: \`feat/...\`, \`fix/...\`, \`docs/...\`
-- **Pull requests** com descrição clara
-- **Issues** para rastreabilidade
-
-## No contexto UGP
-
-Cada projeto deve ter repositório próprio com README descrevendo o problema, a solução e como rodar.`
-
-const docsAsCode = `# Docs as Code
-
-Documentação tratada como código: versionada, revisada e testada.
-
-## Práticas
-
-- Markdown como fonte
-- Diagramas com Mermaid quando necessário
-- README sempre no topo do repositório
-- ADRs (Architecture Decision Records) para decisões importantes`
-
-const arquiteturaSoftware = `# Arquitetura de Software
-
-Arquitetura é o conjunto de decisões que são caras de mudar.
-
-## Princípios
-
-- Separação de responsabilidades
-- Coesão alta, acoplamento baixo
-- YAGNI e KISS antes de over-engineering
-- Trade-offs explícitos
-
-## Padrões úteis
-
-- Camadas (presentation, domain, data)
-- Ports & Adapters (hexagonal)
-- Event-driven quando faz sentido`
-
-const tdd = `# TDD — Test Driven Development
-
-Vermelho, verde, refatora. Em ciclos curtos.
-
-## Por que TDD?
-
-- Força design testável
-- Documenta intenções
-- Reduz medo de refactor
-
-## Na UGP
-
-A partir do nível Pleno 2, todo projeto deve incluir testes automatizados.`
-
-const fullstack = `# Fullstack moderno
-
-Fullstack hoje é: cliente + API + banco + deploy.
-
-## Stack da UGP
-
-- Next.js (frontend + API routes)
-- Supabase (auth + postgres + realtime)
-- Vercel (deploy)
-- GitHub Actions (CI)
-
-## Fluência
-
-Não é saber tudo. É saber ler o stack inteiro e tomar decisões.`
-
-const portfolio = `# Portfólio que vende
-
-Seu portfólio é a prova social da sua capacidade técnica.
-
-## O que incluir
-
-- 3-5 projetos com READMEs fortes
-- Link para produção online
-- Descrição do problema e da sua decisão
-- Métricas (se houver)
-
-## O que evitar
-
-- Tutoriais copy-paste
-- Projetos sem README
-- Sem link de produção`
-
-const primeiraVaga = `# Primeira vaga
-
-A primeira vaga é mais sobre persistência do que talento.
-
-## Estratégia
-
-- 5 aplicações por dia, todos os dias
-- Profile LinkedIn com projetos (não títulos)
-- Contribuições open source para visibilidade
-- Networking em comunidades
-
-## Entrevista
-
-- Estude fundamentos (algoritmos, JS, sistemas)
-- Pratique explicar decisões técnicas
-- Tenha 2 projetos prontos para apresentar`
-
-const livros = `# Livros essenciais
-
-Leitura técnica é alavanca. Priorize estes:
-
-- **Clean Code** — Robert Martin
-- **Refactoring** — Martin Fowler
-- **Designing Data-Intensive Apps** — Martin Kleppmann
-- **The Pragmatic Programmer** — Hunt & Thomas
-- **Domain-Driven Design** — Eric Evans
-
-Não precisa ler todos de uma vez. Um por trimestre já muda sua prática.`
-
-const ux = `# UX para devs
-
-Dev que entende UX constrói produtos melhores e vira referência no time.
-
-## Princípios
-
-- Feedback visual constante
-- Reduzir carga cognitiva
-- Hierarquia visual clara
-- Estados de loading, error, vazio e sucesso
-
-## Erros comuns
-
-- Botão sem estado loading
-- Erro genérico ("algo deu errado")
-- Sem estado vazio (lista sem itens)`
-
+// ── CONTEÚDO (carregado de arquivos markdown em src/content/) ──
 export const CONTENT: Record<string, ContentArticle> = {
-  manifesto: { title: 'Manifesto', body: manifesto },
-  arquitetura: { title: 'Arquitetura da UGP', body: arquitetura },
-  niveis: { title: 'Níveis', body: niveis },
-  github: { title: 'GitHub', body: github },
-  'docs-as-code': { title: 'Docs as Code', body: docsAsCode },
-  'arquitetura-software': { title: 'Arquitetura de Software', body: arquiteturaSoftware },
-  tdd: { title: 'TDD', body: tdd },
-  fullstack: { title: 'Fullstack', body: fullstack },
-  portfolio: { title: 'Portfólio', body: portfolio },
-  'primeira-vaga': { title: 'Primeira Vaga', body: primeiraVaga },
-  livros: { title: 'Livros', body: livros },
-  ux: { title: 'UX', body: ux },
+  manifesto: { title: 'Manifesto', body: manifestoMd },
+  arquitetura: { title: 'Arquitetura da UGP', body: arquiteturaMd },
+  niveis: { title: 'Níveis', body: niveisMd },
+  matriz: { title: 'Matriz', body: matrizMd },
+  github: { title: 'GitHub', body: githubMd },
+  'docs-as-code': { title: 'Docs as Code', body: docsAsCodeMd },
+  'arquitetura-software': { title: 'Arquitetura de Software', body: arquiteturaSoftwareMd },
+  tdd: { title: 'TDD', body: tddMd },
+  fullstack: { title: 'Fullstack Moderno', body: fullstackMd },
+  portfolio: { title: 'Portfólio que Vende', body: portfolioMd },
+  'primeira-vaga': { title: 'Primeira Vaga', body: primeiraVagaMd },
+  livros: { title: 'Livros para Engenheiros', body: livrosMd },
+  ux: { title: 'UX para Devs', body: uxMd },
+  'ia-aplicada': { title: 'IA Aplicada para Devs', body: iaAplicadaMd },
+  'engenharia-prompt': { title: 'Engenharia de Prompt', body: engenhariaPromptMd },
+  'como-nao-fazer-vibe-coding': { title: 'Como NÃO Fazer Vibe Coding', body: vibeCodingMd },
+  'boas-praticas-ia': { title: 'Boas Práticas com IA', body: boasPraticasIaMd },
+  'projeto-ia-1': { title: 'Projeto IA 1 — SaaS de Flashcards com LLM', body: projetoIa1Md },
+  'projeto-ia-2': { title: 'Projeto IA 2 — Code Reviewer com RAG', body: projetoIa2Md },
 }
 
 // ── LANDING OPTIONS ──────────────────────────────────────────

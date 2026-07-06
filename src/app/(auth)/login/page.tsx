@@ -1,19 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Loader2, GraduationCap } from 'lucide-react'
 import { AuthShell } from '@/components/auth/AuthShell'
 import { GoogleIcon } from '@/components/auth/GoogleIcon'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { createClient } from '@/lib/supabase/client'
-import { signInWithGoogle } from '@/actions/auth.actions'
+import { signInWithEmail, signInWithGoogle } from '@/actions/auth.actions'
 
 export default function LoginPage() {
-  const router = useRouter()
-  const supabase = createClient()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -24,14 +20,12 @@ export default function LoginPage() {
     e.preventDefault()
     setError(null)
     setLoading(true)
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    const res = await signInWithEmail(email, password)
     setLoading(false)
-    if (error) {
-      setError(error.message)
-      return
+    if (res && res.error) {
+      setError(res.error)
     }
-    router.push('/app')
-    router.refresh()
+    // Em caso de sucesso, signInWithEmail chama redirect('/gate') no servidor.
   }
 
   async function handleGoogle() {
