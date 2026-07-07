@@ -85,7 +85,7 @@ export default function LandingPage() {
             </Link>
             <a
               href={`https://wa.me/${
-                process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511999999999'
+                process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5531999810260'
               }?text=Quero%20falar%20com%20o%20criador%20da%20UGP`}
               target="_blank"
               rel="noreferrer"

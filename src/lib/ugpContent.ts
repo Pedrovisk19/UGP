@@ -619,7 +619,7 @@ export const LANDING_OPTIONS = [
   },
   {
     id: 'software',
-    label: 'Criar Software',
+    label: 'Crie seu software comigo',
     href: 'https://wa.me/5531999810260?text=Quero%20criar%20um%20software',
     isInternal: false,
     accent: '#6366f1',
@@ -627,7 +627,7 @@ export const LANDING_OPTIONS = [
   },
   {
     id: 'sites',
-    label: 'Criar Sites',
+    label: 'Criar seu site comigo',
     href: 'https://wa.me/5531999810260?text=Quero%20criar%20um%20site',
     isInternal: false,
     accent: '#10b981',

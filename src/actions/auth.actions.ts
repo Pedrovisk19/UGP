@@ -4,13 +4,78 @@ import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 export async function signInWithEmail(email: string, password: string) {
+  const normalizedEmail = String(email ?? '').trim().toLowerCase()
+  const normalizedPassword = String(password ?? '')
+
+  // 1. Validação de campos obrigatórios
+  if (!normalizedEmail) return { error: 'Informe seu email.' }
+  if (!normalizedPassword) return { error: 'Informe sua senha.' }
+  if (normalizedEmail.length > 320) return { error: 'Email muito longo.' }
+  if (normalizedPassword.length > 256) return { error: 'Senha muito longa.' }
+
+  // 2. Validação de formato de email
+  if (!EMAIL_RE.test(normalizedEmail)) {
+    return { error: 'Email inválido. Verifique o formato (ex: voce@email.com).' }
+  }
+
   const supabase = await createClient()
-  const response = await supabase.auth.signInWithPassword({ email, password })
-  console.log(supabase)
-  if (response.error) return { error: response.error.message }
+  const response = await supabase.auth.signInWithPassword({
+    email: normalizedEmail,
+    password: normalizedPassword,
+  })
+
+  if (response.error) {
+    return { error: translateAuthError(response.error) }
+  }
+
   revalidatePath('/', 'layout')
   redirect('/gate')
+}
+
+function translateAuthError(error: {
+  message: string
+  status?: number
+  code?: string | number
+}): string {
+  const msg = error.message?.toLowerCase() ?? ''
+  const code = String(error.code ?? error.status ?? '')
+
+  // Credenciais inválidas (mais comum)
+  if (msg.includes('invalid login credentials') || code === 'invalid_credentials') {
+    return 'Email ou senha incorretos. Verifique e tente novamente.'
+  }
+  // Email não confirmado
+  if (msg.includes('email not confirmed') || msg.includes('email_not_confirmed')) {
+    return 'Você precisa confirmar seu email antes de entrar. Verifique sua caixa de entrada (e o spam).'
+  }
+  // Muitas tentativas (rate limit)
+  if (msg.includes('rate limit') || code === '429' || code === 'over_request_rate_limit') {
+    return 'Muitas tentativas seguidas. Aguarde alguns minutos e tente novamente.'
+  }
+  // Conta banida / desativada
+  if (msg.includes('user banned') || msg.includes('banned')) {
+    return 'Esta conta foi desativada. Entre em contato com o suporte.'
+  }
+  // Provider desabilitado
+  if (msg.includes('provider is not enabled') || msg.includes('provider_disabled')) {
+    return 'Este método de login não está disponível no momento.'
+  }
+  // Campos faltando (defensivo — já validamos acima)
+  if (msg.includes('missing') && msg.includes('email')) {
+    return 'Informe seu email.'
+  }
+  if (msg.includes('missing') && msg.includes('password')) {
+    return 'Informe sua senha.'
+  }
+  // Rede/servidor
+  if (msg.includes('network') || msg.includes('fetch') || code === '504' || code === '503') {
+    return 'Falha de conexão com o servidor. Verifique sua internet e tente novamente.'
+  }
+  // Caso genérico cuja mensagem original já está em PT (raro) — mantém, senão traduz fallback
+  return 'Não foi possível entrar. Tente novamente em instantes.'
 }
 
 export async function signUpWithEmail(email: string, password: string) {
