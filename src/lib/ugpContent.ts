@@ -37,22 +37,22 @@ export const TRAILS: Trail[] = [
     glow: '0 0 60px -15px rgba(99,102,241,0.5)',
     border: 'rgba(99,102,241,0.4)',
   },
-  {
-    id: 'pleno',
-    name: 'Já sei o básico, quero evoluir',
-    tagline: 'Para quem já constrói coisas simples e quer solidificar fundamentos de engenharia de software.',
-    gradient: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
-    glow: '0 0 60px -15px rgba(139,92,246,0.5)',
-    border: 'rgba(139,92,246,0.4)',
-  },
-  {
-    id: 'senior',
-    name: 'Sou dev e quero ir a fundo',
-    tagline: 'Para devs experientes que querem dominar arquitetura, TDD, docs-as-code e engenharia de elite.',
-    gradient: 'linear-gradient(135deg, #10b981, #3b82f6)',
-    glow: '0 0 60px -15px rgba(16,185,129,0.5)',
-    border: 'rgba(16,185,129,0.4)',
-  },
+  // {
+  //   id: 'pleno',
+  //   name: 'Já sei o básico, quero evoluir',
+  //   tagline: 'Para quem já constrói coisas simples e quer solidificar fundamentos de engenharia de software.',
+  //   gradient: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+  //   glow: '0 0 60px -15px rgba(139,92,246,0.5)',
+  //   border: 'rgba(139,92,246,0.4)',
+  // },
+  // {
+  //   id: 'senior',
+  //   name: 'Sou dev e quero ir a fundo',
+  //   tagline: 'Para devs experientes que querem dominar arquitetura, TDD, docs-as-code e engenharia de elite.',
+  //   gradient: 'linear-gradient(135deg, #10b981, #3b82f6)',
+  //   glow: '0 0 60px -15px rgba(16,185,129,0.5)',
+  //   border: 'rgba(16,185,129,0.4)',
+  // },
 ]
 
 // ── NÍVEIS (8) ────────────────────────────────────────────────
@@ -620,7 +620,7 @@ export const LANDING_OPTIONS = [
   {
     id: 'software',
     label: 'Criar Software',
-    href: 'https://wa.me/5511999999999?text=Quero%20criar%20um%20software',
+    href: 'https://wa.me/5531999810260?text=Quero%20criar%20um%20software',
     isInternal: false,
     accent: '#6366f1',
     highlights: ['Consultoria customizada', 'Do MVP ao produto'],
@@ -628,7 +628,7 @@ export const LANDING_OPTIONS = [
   {
     id: 'sites',
     label: 'Criar Sites',
-    href: 'https://wa.me/5511999999999?text=Quero%20criar%20um%20site',
+    href: 'https://wa.me/5531999810260?text=Quero%20criar%20um%20site',
     isInternal: false,
     accent: '#10b981',
     highlights: ['Landing pages', 'Sites institucionais'],

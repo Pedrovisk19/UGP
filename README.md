@@ -168,7 +168,7 @@ ugp/
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/ugp.git
+git clone https://github.com/Pedrovisk19/UGP.git
 cd ugp
 ```
 
