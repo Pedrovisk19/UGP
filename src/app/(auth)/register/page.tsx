@@ -39,18 +39,6 @@ export default function RegisterPage() {
     setSent(true)
   }
 
-  async function handleGoogle() {
-    setGoogleLoading(true)
-    setError(null)
-    const res = await signInWithGoogle()
-    if ('error' in res && res.error) {
-      setError(res.error)
-      setGoogleLoading(false)
-      return
-    }
-    if (res?.url) window.location.href = res.url
-  }
-
   if (sent) {
     return (
       <AuthShell title="Verifique seu email" subtitle="Quase lá! Só falta confirmar sua conta.">
@@ -80,16 +68,6 @@ export default function RegisterPage() {
   return (
     <AuthShell title="Criar conta na UGP" subtitle="Comece sua jornada gratuitamente">
       <div className="space-y-4">
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full"
-          onClick={handleGoogle}
-          disabled={googleLoading || loading}
-        >
-          {googleLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <GoogleIcon />}
-          Continuar com Google
-        </Button>
 
         {error && (
           <div className="text-[12px] text-red-400 bg-red-500/10 border border-red-500/30 rounded-md px-3 py-2">

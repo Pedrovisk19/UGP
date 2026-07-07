@@ -2,12 +2,6 @@
 
 import Link from "next/link";
 
-/**
- * global-error.tsx — boundary mais externo do App Router.
- * Roda quando o próprio root layout ou providers quebram (erros de runtime,
- * chunk órfão, erro em Provider, etc.). Precisa reconstruir <html>/<body>
- * porque o root layout não é renderizado quando este boundary dispara.
- */
 export default function GlobalError({
   error,
   reset,
