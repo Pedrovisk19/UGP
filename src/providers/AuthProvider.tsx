@@ -11,7 +11,9 @@ interface AuthContextValue {
   profile: Profile | null
   loading: boolean
   profileLoading: boolean
+  authError: string | null
   refreshProfile: () => Promise<Profile | null>
+  signOutAndRedirect: (reason?: string) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
@@ -22,6 +24,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
   const [profileLoading, setProfileLoading] = useState(false)
+  const [authError, setAuthError] = useState<string | null>(null)
 
   const refreshProfile = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser()
@@ -29,6 +32,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setProfile(null)
       return null
     }
+    // Garante que session está setada mesmo se onAuthStateChange disparou
+    // antes com INITIAL_SESSION=null (race comum no @supabase/ssr).
+    setSession((prev) => prev ?? null)
+    // Pega a sessão explicitamente para sincronizar o estado local.
+    const { data: sessionData } = await supabase.auth.getSession()
+    setSession(sessionData.session)
     setProfileLoading(true)
     // maybeSingle() evita erro PGRST116 quando a row ainda não existe
     const { data, error } = await supabase
@@ -49,14 +58,37 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     let mounted = true
 
-    supabase.auth.getSession().then(async ({ data }) => {
+    // Safety timeout: se getSession não resolver em 8s, saímos do loading para
+    // evitar spinner infinito. UGPProvider cuida do redirect para /login com erro.
+    const safety = setTimeout(() => {
       if (!mounted) return
-      setSession(data.session)
-      if (data.session?.user) {
-        await refreshProfile()
+      if (loading) {
+        console.warn('AuthProvider: getSession demorou demais — forçando loading=false')
+        setAuthError('session_timeout')
+        setLoading(false)
       }
-      setLoading(false)
-    })
+    }, 8000)
+
+    supabase.auth
+      .getSession()
+      .then(async ({ data }) => {
+        if (!mounted) return
+        clearTimeout(safety)
+        setSession(data.session)
+        if (data.session?.user) {
+          await refreshProfile()
+        }
+        setLoading(false)
+      })
+      .catch((err) => {
+        if (!mounted) return
+        clearTimeout(safety)
+        console.warn('AuthProvider: erro em getSession', err)
+        setAuthError('session_error')
+        setSession(null)
+        setProfile(null)
+        setLoading(false)
+      })
 
     const { data: sub } = supabase.auth.onAuthStateChange(async (_e, newSession) => {
       setSession(newSession)
@@ -69,9 +101,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     return () => {
       mounted = false
+      clearTimeout(safety)
       sub.subscription.unsubscribe()
     }
-  }, [supabase, refreshProfile])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [supabase])
+
+  const signOutAndRedirect = useCallback(async (reason?: string) => {
+    try {
+      await supabase.auth.signOut()
+    } catch {
+      // ignore
+    }
+    setSession(null)
+    setProfile(null)
+    const url = new URL('/login', window.location.origin)
+    if (reason) url.searchParams.set('error', reason)
+    if (window.location.pathname !== '/login') {
+      url.searchParams.set('redirect', window.location.pathname)
+      window.location.replace(url.toString())
+    }
+  }, [supabase])
 
   return (
     <AuthContext.Provider
@@ -81,7 +131,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         profile,
         loading,
         profileLoading,
+        authError,
         refreshProfile,
+        signOutAndRedirect,
       }}
     >
       {children}

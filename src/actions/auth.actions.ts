@@ -1,13 +1,14 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
-import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 
 export async function signInWithEmail(email: string, password: string) {
   const supabase = await createClient()
-  const { error } = await supabase.auth.signInWithPassword({ email, password })
-  if (error) return { error: error.message }
+  const response = await supabase.auth.signInWithPassword({ email, password })
+  console.log(supabase)
+  if (response.error) return { error: response.error.message }
   revalidatePath('/', 'layout')
   redirect('/gate')
 }
@@ -22,12 +23,10 @@ export async function signUpWithEmail(email: string, password: string) {
   if (error) return { error: error.message }
 
   if (data.session) {
-    revalidatePath('/', 'layout')
+    revalidatePath('/', 'page')
     redirect('/gate')
   }
 
-  // Caso 2: usuário já existe e está confirmado -> Supabase retorna user mas sem session
-  // e identidades vazias, sem enviar novo email. Sinalizamos para o frontend.
   if (data.user && (data.user.identities?.length ?? 0) === 0) {
     return {
       error:

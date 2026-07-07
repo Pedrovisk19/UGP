@@ -45,11 +45,12 @@ export async function supabaseMiddleware(request: NextRequest) {
   const isPublic = PUBLIC_PATHS.includes(pathname)
   const isAuthRoute = AUTH_PATHS.includes(pathname)
 
-  // Usuário anônimo em rota privada → /login
+  // Usuário anônimo em rota privada → /login com erro
   if (!user && !isPublic) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     url.searchParams.set('redirect', pathname)
+    url.searchParams.set('error', 'unauthenticated')
     return NextResponse.redirect(url)
   }
 

@@ -85,6 +85,60 @@ export type Database = {
         }
         Update: Partial<Database['public']['Tables']['project_submissions']['Insert']>
       }
+      quiz_attempts: {
+        Row: {
+          id: string
+          created_at: string
+          updated_at: string
+          created_by_id: string
+          module_id: string
+          score: number
+          total: number
+          percentage: number
+          correct_ids: string[]
+          incorrect_ids: string[]
+          duration_ms: number
+          xp_gain: number
+        }
+        Insert: {
+          id?: string
+          created_by_id: string
+          module_id: string
+          score?: number
+          total?: number
+          percentage?: number
+          correct_ids?: string[]
+          incorrect_ids?: string[]
+          duration_ms?: number
+          xp_gain?: number
+        }
+        Update: Partial<Database['public']['Tables']['quiz_attempts']['Insert']>
+      }
+    }
+    Views: {
+      quiz_best_per_module: {
+        Row: {
+          created_by_id: string
+          module_id: string
+          best_percentage: number
+          best_score: number
+          attempts: number
+          comfortable_score: number | null
+        }
+      }
+      user_progress_summary: {
+        Row: {
+          id: string
+          full_name: string | null
+          email: string | null
+          selected_trail: 'junior' | 'pleno' | 'senior' | null
+          current_level: string | null
+          xp_points: number
+          modules_completed: number
+          projects_with_progress: number
+          projects_approved: number
+        }
+      }
     }
   }
 }
