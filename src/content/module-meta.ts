@@ -19,6 +19,19 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 12,
     technologies: [],
     tags: ['Fundamentos', 'Tese central'],
+    competencies: ['Pensamento crítico', 'Decisão técnica', 'Autonomia'],
+    mission: [
+      'Explicar a tese central da UGP (sintaxe vs. engenharia)',
+      'Situar o aprendiz nas eras do ensino de software',
+      'Apresentar os 3 pilares (conteúdo denso, projetos reais, níveis)',
+      'Estabelecer o manifesto como referência para reler',
+    ],
+    prerequisites: [],
+    connections: [
+      { type: 'module', label: 'Arquitetura da UGP', ref: 'arquitetura' },
+      { type: 'module', label: 'Níveis', ref: 'niveis' },
+      { type: 'module', label: 'Matriz', ref: 'matriz' },
+    ],
     summary: [
       { icon: '🎯', title: 'Sintaxe vs. Engenharia', description: 'A diferença entre programador e engenheiro está em decidir, prever e assumir trade-offs — não em saber mais linguagens.' },
       { icon: '📚', title: 'Profundidade com acesso', description: 'A UGP combina a profundidade dos primórdios com o acesso gratuito da era dos cursos e a estrutura dos bootcamps.' },
@@ -54,6 +67,23 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 11,
     technologies: ['Next.js', 'Supabase', 'PostgreSQL', 'Tailwind', 'React Server Components'],
     tags: ['Arquitetura', 'Stack moderno'],
+    competencies: ['Arquitetura', 'Engenharia', 'Organização', 'Backend'],
+    mission: [
+      'Entender como a UGP foi construída peça por peça',
+      'Justificar trade-offs de cada decisão (Next.js, Supabase, Markdown, Tailwind, Vercel)',
+      'Ler uma Server Action e identificar por que ela é segura',
+      'Explicar o papel da RLS defendendo no banco, não no frontend',
+      'Reconhecer erros comuns por nível (iniciante, intermediário, sênior)',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Manifesto UGP', ref: 'manifesto' },
+    ],
+    connections: [
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+      { type: 'module', label: 'Fullstack Moderno', ref: 'fullstack' },
+      { type: 'module', label: 'GitHub', ref: 'github' },
+      { type: 'module', label: 'Níveis', ref: 'niveis' },
+    ],
     summary: [
       { icon: '🧱', title: 'Frontend Next.js', description: 'App Router + Server Components + Server Actions: mesma base usada em startups como Vercel, Cal.com, Resend.' },
       { icon: '🗄️', title: 'BaaS Supabase', description: 'Auth, Postgres + RLS, Realtime e Storage prontos — trade-off é acoplamento ao provedor.' },
@@ -90,6 +120,21 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 11,
     technologies: [],
     tags: ['Progressão', 'Carreira'],
+    competencies: ['Autoavaliação', 'Metacognição', 'Mentoria'],
+    mission: [
+      'Definir nível por competência observável, não por tempo',
+      'Detalhar os 8 níveis (conhecimento, limitação, métrica, checklist)',
+      'Mostrar que nível é assimétrico entre áreas',
+      'Conectar níveis a projetos da UGP e a trilhas de mercado',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Manifesto', ref: 'manifesto' },
+    ],
+    connections: [
+      { type: 'module', label: 'Matriz', ref: 'matriz' },
+      { type: 'module', label: 'Manifesto', ref: 'manifesto' },
+      { type: 'module', label: 'GitHub', ref: 'github' },
+    ],
     summary: [
       { icon: '📏', title: 'Competência > anos', description: 'Empresas de elite definem nível pelo que você demonstra, não pelo tempo. A UGP faz o mesmo.' },
       { icon: '8️⃣', title: '8 níveis granulares', description: 'Extremo Iniciante → Junior 1/2/3 → Pleno 1/2/3 → Sênior. Faixas finas = clareza.' },
@@ -145,6 +190,20 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 11,
     technologies: ['Git', 'GitHub', 'Conventional Commits', 'GitHub Actions'],
     tags: ['Versionamento', 'Colaboração'],
+    competencies: ['Versionamento', 'Colaboração', 'Engenharia', 'Disciplina'],
+    mission: [
+      'Entender o que o Git realmente é (distribuído, commits em cadeia, branches como ponteiros)',
+      'Dominar os 3 estados (working, staging, repository) e o que cada comando move entre eles',
+      'Escrever mensagens em Conventional Commits',
+      'Resolver merge conflicts sem apagar a pasta e clonar de novo',
+      'Aplicar GitHub Flow em qualquer projeto',
+    ],
+    prerequisites: [],
+    connections: [
+      { type: 'module', label: 'Docs as Code', ref: 'docs-as-code' },
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+      { type: 'module', label: 'Portfólio que Vende', ref: 'portfolio' },
+    ],
     summary: [
       { icon: '🌳', title: 'Distribuído', description: 'Cada clone é um repositório completo. Servidor caiu? Você continua commitando offline.' },
       { icon: '📸', title: 'Commit = foto', description: 'Guarda apenas o diff desde a última foto. Cada commit tem hash, autor, timestamp e parent.' },
@@ -180,6 +239,20 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 10,
     technologies: ['Markdown', 'ADRs', 'docusaurus', 'mkdocs', 'nextra'],
     tags: ['Documentação', 'Engenharia'],
+    competencies: ['Documentação', 'Engenharia', 'Comunicação', 'Organização'],
+    mission: [
+      'Entender por que documentação morre fora do Git e vive dentro dele',
+      'Escrever um ADR (Contexto, Decisão, Consequências, Status)',
+      'Reconhecer quando markdown estático ou CMS é a escolha certa',
+      'Exigir que PRs que mexem em código mexam também em doc',
+      'Distinguir "decisão" (ADR) de "memória de reunião"',
+    ],
+    prerequisites: [],
+    connections: [
+      { type: 'module', label: 'GitHub', ref: 'github' },
+      { type: 'module', label: 'TDD', ref: 'tdd' },
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+    ],
     summary: [
       { icon: '📖', title: 'Markdown vence Word',      description: 'Leitura sem ferramenta, diff limpo, portável, sem lock-in proprietário.' },
       { icon: '🏛️', title: 'ADR = memória da decisão', description: 'Architecture Decision Record: contexto, decisão, consequências, status. 1 página, versionada.' },
@@ -209,36 +282,52 @@ const M: Record<string, ModuleMeta> = {
   'arquitetura-software': {
     slug: 'arquitetura-software',
     title: 'Arquitetura de Software',
-    subtitle: 'Arquitetura não é sobre escolher stacks. É decidir o que não fazer.',
+    subtitle: 'Antes de escrever código, alguém precisa tomar decisões.',
     description:
-      'Toda decisão arquitetural é trade-off. Há monólitos modulares (comece aqui), camadas, hexagonal, microsserviços e event-driven. Cada um atende a contextos diferentes — não há "melhor", há "melhor para seu problema".',
-    level: 'Avançado',
-    readingTime: 11,
-    technologies: ['DDD', 'Hexagonal', 'Microsserviços', 'Event-Driven', 'C4 model'],
+      'Arquitetura não é framework, não é biblioteca e não é pasta. É um conjunto de decisões sobre como o sistema será organizado, como as partes se comunicam e onde cada responsabilidade mora — para que o software continue evoluindo sem virar caos.',
+    level: 'Iniciante',
+    readingTime: 9,
+    technologies: ['Camadas', 'Monólito Modular', 'Separação de Responsabilidades', 'ADR'],
     tags: ['Arquitetura', 'Trade-offs'],
+    competencies: ['Organização', 'Arquitetura', 'Escalabilidade', 'Engenharia'],
+    mission: [
+      'Entender o que é Arquitetura de Software e por que ela existe',
+      'Explicar a diferença entre um sistema com e sem arquitetura',
+      'Identificar responsabilidades e camadas em qualquer sistema',
+      'Reconhecer os erros arquiteturais mais comuns de iniciantes',
+      'Olhar para sistemas reais (Nubank, Spotify, Netflix) e enxergar decisões',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Manifesto UGP', ref: 'manifesto' },
+    ],
+    connections: [
+      { type: 'module', label: 'Arquitetura da UGP', ref: 'arquitetura' },
+      { type: 'module', label: 'Fullstack Moderno', ref: 'fullstack' },
+      { type: 'module', label: 'TDD', ref: 'tdd' },
+      { type: 'module', label: 'Níveis', ref: 'niveis' },
+    ],
     summary: [
-      { icon: '🧊', title: 'Comece modular',     description: 'Monólito modular resolve 90% dos casos. Microsserviço é opção futura, não default.' },
-      { icon: '🎯', title: 'SoC + coesão',       description: 'Separação de responsabilidades, alta coesão e baixo acoplamento são universais — não framework-dependentes.' },
-      { icon: '⏭️', title: 'YAGNI > KISS',       description: 'Não construir para futuro imaginado. Simplicidade que resolve hoje vence abstração prematura.' },
-      { icon: '📝', title: 'Trade-offs em ADR',  description: 'Decisões documentadas sobrevivem ao tempo. Sem ADR, "por que usamos X?" vira lenda.' },
+      { icon: '🧱', title: 'Decisão antes do código', description: 'Arquitetura é o conjunto de decisões que define como o sistema será organizado antes da implementação.' },
+      { icon: '🎯', title: 'Responsabilidade única', description: 'Cada camada e cada arquivo faz uma coisa. Mudança fica previsível e contida.' },
+      { icon: '📈', title: 'Crescer sem caos', description: 'Sem arquitetura, crescimento vira bagunça. Com arquitetura, o sistema evolui com qualidade.' },
+      { icon: '🧭', title: 'Pensar como engenheiro', description: 'A pergunta certa não é "como faço funcionar?", mas "como faço continuar funcionando em 5 anos?".' },
     ],
     checklist: [
-      'Consigo desenhar os 3 padrões (monólito modular, hexagonal, microsserviços) num guardanapo.',
-      'Sei explicar quando NÃO usar microsserviços.',
-      'Aplico YAGNI: questiono adicionar Redis/Kafka/queue sem medida que justifique.',
-      'Sei escrever um ADR para uma decisão arquitetural não-trivial.',
-      'Posso avaliar se minha arquitetura tem acoplamento escondido entre camadas.',
+      'Consigo definir Arquitetura de Software sem citar frameworks.',
+      'Sei explicar a diferença entre um sistema com e sem arquitetura.',
+      'Identifico ao menos três responsabilidades em um sistema que uso todo dia.',
+      'Reconheço os quatro erros arquiteturais mais comuns de iniciantes.',
+      'Olho para um sistema real e consigo formular perguntas arquiteturais sobre ele.',
     ],
     exercises: [
-      { scenario: 'Helpdesk SaaS, 400 empresas, 5 devs.', prompt: 'Qual arquitetura? Justifique com 3 critérios.', },
-      { scenario: 'Nubank de cartão: 10M clientes, cobranças em massa, auditoria legal.', prompt: 'Qual padrão e por quê?', },
-      { scenario: 'Time quer extrair microsserviço do monólito "para escalar".', prompt: 'Quais 3 perguntas um sênior faria antes de aprovar?', },
+      { scenario: 'Você herda um sistema onde o controller acessa o banco, envia e-mail e gera PDF tudo junto.', prompt: 'Descreva em 3 linhas como reorganizaria em camadas.', },
+      { scenario: 'Um colega diz: "vou usar Kafka e Kubernetes para escalar meu MVP de 5 usuários."', prompt: 'Quais 2 argumentos contra você daria?', hint: 'YAGNI e custo de operação distribuída.' },
+      { scenario: 'Escolha um app que você usa hoje (Spotify, iFood, Nubank, GitHub).', prompt: 'Liste 3 componentes arquiteturais distintos e a responsabilidade de cada um.', },
     ],
     nextSteps: [
-      { type: 'module',  label: 'Fullstack Moderno',  ref: 'fullstack' },
-      { type: 'module',  label: 'TDD',                ref: 'tdd' },
+      { type: 'module',  label: 'Arquitetura da UGP',  ref: 'arquitetura' },
+      { type: 'module',  label: 'Fullstack Moderno',   ref: 'fullstack' },
       { type: 'project', label: 'Projeto 07 — SaaS', ref: '7' },
-      { type: 'project', label: 'Projeto 10 — Clone Supabase', ref: '10' },
     ],
   },
 
@@ -252,6 +341,21 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 12,
     technologies: ['Vitest', 'Jest', 'Playwright', 'Testing Library'],
     tags: ['Qualidade', 'Disciplina'],
+    competencies: ['Testes', 'Disciplina', 'Refatoração', 'Design testável'],
+    mission: [
+      'Escrever um teste que falha antes do código existir',
+      'Implementar o mínimo para o teste passar e parar (YAGNI)',
+      'Refatorar com segurança mantendo o comportamento',
+      'Decidir quando aplicar e quando não aplicar TDD',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+      { type: 'module', label: 'GitHub', ref: 'github' },
+    ],
+    connections: [
+      { type: 'module', label: 'Boas práticas com IA', ref: 'boas-praticas-ia' },
+      { type: 'module', label: 'Fullstack Moderno', ref: 'fullstack' },
+    ],
     summary: [
       { icon: '🔴', title: 'Red: o teste falha',     description: 'Confirma que o teste roda e está testando a coisa certa. Falha esperada é bom sinal.' },
       { icon: '🟢', title: 'Green: o mínimo',        description: 'Implemente só o suficiente para passar. YAGNI — não antecipe features.' },
@@ -287,6 +391,23 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 10,
     technologies: ['Next.js', 'React 19', 'Supabase', 'PostgreSQL', 'Tailwind', 'Vercel'],
     tags: ['Stack', 'Web moderno'],
+    competencies: ['Fullstack', 'Decisão de stack', 'Frontend', 'Backend', 'Infraestrutura'],
+    mission: [
+      'Diferenciar as eras do stack e entender qual problema cada uma resolveu',
+      'Identificar as camadas de um stack moderno e como elas conversam',
+      'Saber responder "isso roda no servidor ou no client?"',
+      'Escolher stack por etapa do projeto (protótipo/MVP/crescimento/escala)',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+      { type: 'module', label: 'GitHub', ref: 'github' },
+      { type: 'module', label: 'Docs as Code', ref: 'docs-as-code' },
+    ],
+    connections: [
+      { type: 'module', label: 'Test-Driven Development', ref: 'tdd' },
+      { type: 'module', label: 'UX para Devs', ref: 'ux' },
+      { type: 'module', label: 'Portfólio', ref: 'portfolio' },
+    ],
     summary: [
       { icon: '🧩', title: 'Camadas clássicas',    description: 'Frontend → Backend → Database. Backend moderno usa Server Components/Actions/Route Handlers.' },
       { icon: '⚡', title: 'RSC + Server Actions', description: 'Menos JS no client, mutações no servidor seguras, SEO pronto.同一代码库 roda em ambos.' },
@@ -323,6 +444,22 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 6,
     technologies: ['GitHub', 'Vercel', 'Next.js'],
     tags: ['Carreira', 'Prova social'],
+    competencies: ['Comunicação técnica', 'Documentação', 'Apresentação', 'Decisão técnica', 'Carreira'],
+    mission: [
+      'Montar portfólio com 3-5 projetos selecionados, cada um com link de produção ativo',
+      'Escrever README premium (80-150 linhas) em pelo menos um projeto',
+      'Atualizar LinkedIn com featured projects e bio com link do portfólio',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'GitHub', ref: 'github' },
+      { type: 'module', label: 'Docs as Code', ref: 'docs-as-code' },
+    ],
+    connections: [
+      { type: 'module', label: 'Primeira Vaga', ref: 'primeira-vaga' },
+      { type: 'module', label: 'GitHub', ref: 'github' },
+      { type: 'module', label: 'Docs as Code', ref: 'docs-as-code' },
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+    ],
     summary: [
       { icon: '🧾', title: 'Repositório de tutorial', description: 'Clone do YouTube = indica que você segue instruções. Distinguir pela autoria de decisões.' },
       { icon: '🔗', title: 'Produção URL sempre',     description: '"Roda com npm run dev" = ninguém roda. Vercel é grátis.' },
@@ -358,6 +495,22 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 8,
     technologies: ['LinkedIn', 'GitHub'],
     tags: ['Carreira', 'Mercado'],
+    competencies: ['Posicionamento de mercado', 'Networking', 'Entrevista técnica', 'Comunicação', 'Estratégia'],
+    mission: [
+      'Definir 10 empresas alvo específicas e identificar referrals para cada uma',
+      'Estabelecer ritmo de 5 aplicações semanais com CV personalizado por empresa',
+      'Agendar entrevista simulada com amigo dev e gravar para autocrítica',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Portfólio que Vende', ref: 'portfolio' },
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+    ],
+    connections: [
+      { type: 'module', label: 'Portfólio que Vende', ref: 'portfolio' },
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+      { type: 'module', label: 'TDD', ref: 'tdd' },
+      { type: 'module', label: 'Fullstack', ref: 'fullstack' },
+    ],
     summary: [
       { icon: '📨', title: '5-10 apps/semana',     description: 'Qualidade > quantidade. CV único por empresa explicando "por que essa empresa".' },
       { icon: '🤝', title: 'Networking é silencioso', description: 'Não é pedir vaga. É construir conexões — eventos, OSS, Discord — que resultam em vaga.' },
@@ -393,6 +546,22 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 8,
     technologies: [],
     tags: ['Carreira', 'Leitura', 'Fundamentos'],
+    competencies: ['Leitura ativa', 'Aplicação prática', 'Trade-offs'],
+    mission: [
+      'Definir o lugar do livro vs. tutorial na formação de engenheiro',
+      'Apresentar os 5 livros essenciais com nível ideal de leitura',
+      'Ensinar um método de leitura ativa (aplicar 1 padrão por livro)',
+      'Conectar cada livro a um projeto da UGP',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Manifesto', ref: 'manifesto' },
+      { type: 'module', label: 'Níveis', ref: 'niveis' },
+    ],
+    connections: [
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+      { type: 'module', label: 'TDD', ref: 'tdd' },
+      { type: 'project', label: 'Projeto 09 — LMS', ref: '9' },
+    ],
     summary: [
       { icon: '📘', title: 'Clean Code',       description: 'Junior 2-3. Código é lido 10x mais que escrito. Função = uma coisa. Comentários são falhas.' },
       { icon: '🧠', title: 'Pragmatic Programmer', description: 'Júnior 3/Pleno 1. DRY é sobre conhecimento, não código. Rubber ducking. Tracer bullets.' },
@@ -429,6 +598,22 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 9,
     technologies: ['Tailwind', 'shadcn/ui', 'Design Tokens'],
     tags: ['UX', 'Frontend'],
+    competencies: ['UX', 'Empatia com usuário', 'Design system', 'Acessibilidade', 'Frontend'],
+    mission: [
+      'Aplicar os 5 princípios de UX (affordance, feedback, hierarquia, consistência, visibilidade)',
+      'Implementar todos os 9 estados de cada componente de UI',
+      'Escrever mensagens de erro com causa + ação',
+      'Construir empty states com call-to-action',
+      'Garantir contraste WCAG AA mínimo (4.5:1)',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+      { type: 'module', label: 'Fullstack Moderno', ref: 'fullstack' },
+    ],
+    connections: [
+      { type: 'module', label: 'Fullstack Moderno', ref: 'fullstack' },
+      { type: 'module', label: 'Portfólio', ref: 'portfolio' },
+    ],
     summary: [
       { icon: '👆', title: 'Affordance',       description: 'Botão apertável, link clicável. Se não parece o que é, ninguém usa.' },
       { icon: '⚡', title: 'Feedback imediato', description: 'Toda ação tem resposta. Loading em > 300ms com skeleton, não "carregando…".' },
@@ -465,6 +650,18 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 6,
     technologies: ['LLMs', 'OpenAI', 'Anthropic', 'Copilot', 'Cursor'],
     tags: ['IA', 'Contexto'],
+    competencies: ['Classificar tarefas (fuzzy vs. estruturada)', 'Avaliar quando NÃO usar IA', 'Identificar as 5 categorias de IA aplicada', 'Manter responsabilidade técnica ao delegar geração'],
+    mission: [
+      'Diferenciar IA aplicada de IA como buzzword em qualquer tarefa que encontrar',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+    ],
+    connections: [
+      { type: 'module', label: 'Engenharia de Prompt', ref: 'engenharia-prompt' },
+      { type: 'module', label: 'Como NÃO Fazer Vibe Coding', ref: 'como-nao-fazer-vibe-coding' },
+      { type: 'module', label: 'Boas Práticas com IA', ref: 'boas-praticas-ia' },
+    ],
     summary: [
       { icon: '🤖', title: 'IA clássica vs ML vs LLM', description: 'Regras explícitas → aprendizado supervisionado → modelos de bilhões de parâmetros que alucinam.' },
       { icon: '✍️', title: 'Tipos de uso para dev',     description: 'Code completion, chat assistente, geração de testes/docs, RAG e agentes.' },
@@ -500,6 +697,18 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 7,
     technologies: ['LLMs', 'Few-shot', 'Chain-of-thought'],
     tags: ['IA', 'Técnica'],
+    competencies: ['Estruturar prompts com as 6 partes', 'Aplicar few-shot e chain-of-thought quando exigido', 'Iterar 2-3 rodadas em vez de aceitar o 1º output', 'Solicitar e avaliar trade-offs e alternativas'],
+    mission: [
+      'Operar a IA com prompts estruturados em vez de apenas "usá-la"',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'IA Aplicada para Devs', ref: 'ia-aplicada' },
+    ],
+    connections: [
+      { type: 'module', label: 'Boas Práticas com IA', ref: 'boas-praticas-ia' },
+      { type: 'module', label: 'Como NÃO Fazer Vibe Coding', ref: 'como-nao-fazer-vibe-coding' },
+      { type: 'module', label: 'TDD', ref: 'tdd' },
+    ],
     summary: [
       { icon: '🎭', title: 'Papel + contexto',   description: '"Você é sênior em X. Estou construindo Y com Z" — dá referência e escopo.' },
       { icon: '📐', title: '6 partes do prompt', description: 'Papel, contexto, tarefa, restrições, formato, pedido de trade-offs.' },
@@ -535,6 +744,23 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 6,
     technologies: ['IA', 'Cursor', 'Copilot'],
     tags: ['IA', 'Antipadrões'],
+    competencies: ['Engenharia com IA', 'Revisão de código', 'Debug', 'Documentação', 'Decisão técnica'],
+    mission: [
+      'Identificar os 5 antipadrões do vibe coding no próprio fluxo de trabalho',
+      'Adotar checklist de leitura obrigatória antes de commitar código gerado por IA',
+      'Documentar decisões geradas com IA em ADRs transparentes',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Engenharia de Prompt', ref: 'engenharia-prompt' },
+      { type: 'module', label: 'Boas Práticas com IA', ref: 'boas-praticas-ia' },
+    ],
+    connections: [
+      { type: 'module', label: 'Boas Práticas com IA', ref: 'boas-praticas-ia' },
+      { type: 'module', label: 'Engenharia de Prompt', ref: 'engenharia-prompt' },
+      { type: 'module', label: 'TDD', ref: 'tdd' },
+      { type: 'module', label: 'GitHub', ref: 'github' },
+      { type: 'module', label: 'Docs as Code', ref: 'docs-as-code' },
+    ],
     summary: [
       { icon: '👁️', title: 'Leia cada linha',  description: 'Se não explica uma linha, pergunte à IA o que ela faz. Então entenda.' },
       { icon: '🧱', title: 'Build incremental', description: 'Peça uma peça. Teste. A próxima. IA cospe 5 arquivos sem saber sua estrutura.' },
@@ -570,6 +796,20 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 7,
     technologies: ['IA', 'Cursor', 'Copilot', 'CODEAuthors'],
     tags: ['IA', 'Workflow'],
+    competencies: ['Aplicar o workflow de 7 passos', 'Validar output de IA linha a linha', 'Documentar autoria com co-author tags', 'Escalar boas práticas em time com templates e guidelines'],
+    mission: [
+      'Construir um workflow replicável e defensável em entrevista para uso de IA em produção',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Engenharia de Prompt', ref: 'engenharia-prompt' },
+      { type: 'module', label: 'Como NÃO Fazer Vibe Coding', ref: 'como-nao-fazer-vibe-coding' },
+    ],
+    connections: [
+      { type: 'module', label: 'Engenharia de Prompt', ref: 'engenharia-prompt' },
+      { type: 'module', label: 'Como NÃO Fazer Vibe Coding', ref: 'como-nao-fazer-vibe-coding' },
+      { type: 'module', label: 'TDD', ref: 'tdd' },
+      { type: 'module', label: 'Portfólio', ref: 'portfolio' },
+    ],
     summary: [
       { icon: '🧭', title: 'Defina antes de abrir IA', description: 'Escreva problema, constraints e sucesso em markdown — clareia mentalmente.' },
       { icon: '📐', title: 'Esboce solução sem IA',    description: 'Rabisco em papel ou ASCII. A arquitetura é sua, IA é execução.' },
@@ -605,6 +845,25 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 9,
     technologies: ['Next.js', 'Supabase', 'LLM API', 'RLS', 'Streaming', 'Vitest'],
     tags: ['Projeto', 'IA'],
+    competencies: ['Integração de LLM', 'RLS multi-tenant', 'Parse defensivo de JSON', 'Teste de prompt'],
+    mission: [
+      'Construir um SaaS de flashcards com geração via LLM',
+      'Integrar auth do Supabase com RLS multi-usuário',
+      'Estruturar prompt estável e testável',
+      'Publicar app na Vercel',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Engenharia de Prompt', ref: 'engenharia-prompt' },
+      { type: 'module', label: 'Boas Práticas com IA', ref: 'boas-praticas-ia' },
+      { type: 'module', label: 'Como NÃO Fazer Vibe Coding', ref: 'como-nao-fazer-vibe-coding' },
+      { type: 'module', label: 'TDD', ref: 'tdd' },
+      { type: 'project', label: 'Projeto 07 — SaaS de Notas', ref: '7' },
+    ],
+    connections: [
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+      { type: 'module', label: 'Fullstack', ref: 'fullstack' },
+      { type: 'project', label: 'Projeto 09 — LMS', ref: '9' },
+    ],
     summary: [
       { icon: '📚', title: 'Multi-tenant + RLS',  description: 'Cada usuário vê só seus decks. RLS garante no banco. Auth via Supabase.' },
       { icon: '🤖', title: 'Prompt estruturado',   description: 'Pedir JSON sem preâmbulo, sem números. Parse com try/catch — não confie em formato.' },
@@ -640,6 +899,25 @@ const M: Record<string, ModuleMeta> = {
     readingTime: 11,
     technologies: ['pgvector', 'Supabase', 'Anthropic', 'Embeddings', 'GitHub OAuth', 'Playwright'],
     tags: ['Projeto', 'IA', 'RAG'],
+    competencies: ['RAG pipeline', 'pgvector', 'Controle de custo de IA', 'Integração GitHub OAuth + webhooks'],
+    mission: [
+      'Construir um code reviewer com RAG baseado no próprio codebase',
+      'Implementar indexação com embeddings em pgvector',
+      'Recuperar chunks similares via busca semântica',
+      'Gerar review contextual com LLM e postar no GitHub',
+      'Controlar custo e auditar gerações',
+    ],
+    prerequisites: [
+      { type: 'module', label: 'Projeto IA 1 — Flashcards', ref: 'projeto-ia-1' },
+      { type: 'module', label: 'Engenharia de Prompt', ref: 'engenharia-prompt' },
+      { type: 'module', label: 'Boas Práticas com IA', ref: 'boas-praticas-ia' },
+      { type: 'module', label: 'Arquitetura de Software', ref: 'arquitetura-software' },
+      { type: 'module', label: 'TDD', ref: 'tdd' },
+    ],
+    connections: [
+      { type: 'project', label: 'Projeto 09 — LMS', ref: '9' },
+      { type: 'project', label: 'Projeto 10 — Clone do Supabase', ref: '10' },
+    ],
     summary: [
       { icon: '🗂️', title: 'Indexação com embeddings',  description: 'Chunk por arquivo (50-100 linhas), embedding via API, pgvector armazena. ivfflat para nearest neighbors.' },
       { icon: '🔍', title: 'RAG query',                 description: 'Embed do diff → busca top-5 similares → prompt com diff + contexto real do codebase.' },

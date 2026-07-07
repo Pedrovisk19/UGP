@@ -13,6 +13,7 @@ import { slugify } from '@/lib/module/toc'
 const CALLOUT_KEYWORDS: { kind: CalloutKind; re: RegExp }[] = [
   { kind: 'note',        re: /^\[!note\]/i },
   { kind: 'info',        re: /^\[!info\]/i },
+  { kind: 'important',   re: /^\[!important\]/i },
   { kind: 'success',     re: /^\[!(tip|success)\]/i },
   { kind: 'warning',     re: /^\[!(warning|caution|attention)\]/i },
   { kind: 'security',    re: /^\[!security\]/i },

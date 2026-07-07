@@ -1,150 +1,179 @@
-# UX para Devs
+## O que é UX para devs
 
-## Introdução
+UX (User Experience) costuma ser tratado como "coisa de designer". Devs codam o que o designer desenhou. Mas software moderno quebra essa divisão.
 
-UX (User Experience) costuma ser tratado como "coisa de designer". Devs code o que o designer desenhou. Mas software moderno quebra essa divisão.
+Você está implementando uma feature. Tem 3 botões com labels semelhantes. O designer não está disponível. Você precisa decidir — agora.
 
-Você está implementando uma feature. Tem 3 botões com labels semelhantes. Designer não está disponível. Você precisa decidir.
+Ou: você está debugando. Por que os usuários não convertem no checkout? Você descobre que ninguém entende que "Continuar como convidado" é o botão certo. Eles vão embora pelo caminho mais confuso.
 
-Ou: você está debugando. Por que usuários não convertem no checkout? Você descobre que você não enteder que o botão "Continuar como convidado" é claro. Os usuários vão por groupon.
+Ou: você escreve uma mensagem de erro ("algo deu errado") — e o usuário não sabe nem o que fazer a seguir.
 
-Ou: você está escrevendo um erro ("algo deu errado") — e o usuário não sabe nem o quê fazer.
+> [!NOTE]
+> Dev sem UX é dev incompleto. Não precisa ser designer — mas precisa entender os princípios básicos de como humanos interpretam interfaces. Quem escreve o código decide, no fim das contas, como mil pessoas vão enxergar o sistema.
 
-Dev sem UX é dev incompleto. Não precisa ser designer — mas precisa entender os princípios básicos de como humanos interpretam interfaces.
+Quando você termina este módulo, vê interfaces com um novo olhar. E o código que você escreve serve melhor a quem o usa.
 
-Quando você termina este módulo, você vê interfaces com novo olhar. E o código que você escreve serve melhor a quem o usa.
+## Contexto histórico: da HCI ao Figma
 
----
+UX não nasceu com a web. É o ponto atual de uma evolução.
 
-## Contexto Histórico
+### UI ergonômica — 1980 a 2000
 
-### UI ergonômica (1980-2000)
+Apple e Xerox PARC inventaram as interfaces gráficas. HCI (Human-Computer Interaction) era pesquisada como academia. Regras surgiram: mnemônica, affordance, mapping.
 
-Apple, Xerox PARX inventaram interfaces gráficas. HCI (Human-Computer Interaction)researchada como academia. Regras: mnemônica, affordance, mapping.
+### Web — 1995 a 2010
 
-### Web (1995-2010)
+UI design mais livre. Muitas abominações natives da web: cada botão tinha seu próprio reread de estilos, e a preocupação real era compatibilidade entre browsers, não consistência visual.
 
-UI design mais livre. Maus abominations websites. Cada button tinhaQo rereudãoNATHAN. Pesquisa se consiste browser support eDECORATED chat interactions.
+### Mobile — 2007 até hoje
 
-### Mobile (2007-presente)
+O iPhone tocou tudo. UX passou a exigir relevância mobile-first: polegares, telas pequenas, interação gestual.
 
-iPhone tocando tudo. UX precisa de relevância mobile-first. Thumbs, small screens, gestural.
+### Moderno — 2015 até hoje
 
-### Modern (2015-presente)
+Figma democratizou o design. Material Design e Human Interface Guidelines tornaram-se referência. Devs passaram a mexer em Figma — e designers passaram a mexer em código.
 
-Figma democratised design. Material Design e Human Interface Guidelines tornaram-se referência. Devs passaram a mexer em Figma (e designers em código).
+> [!INFO]
+> Hoje a linha entre dev e designer é mais fina do que nunca. Component libraries (shadcn/ui, Radix) foram escritas *para devs*, não para designers. Quem implementa UI é quem aplica os princípios de UX.
 
----
+## Analogia: a cozinha que só a cozinheira entende
 
-## Explicação Intuitiva
+Imagine uma cozinheira experiente. Ela abriu um novo restaurante. Dispôs louças, talheres, gadgets de uma forma que faz sentido para ela — afinal, a cozinha é dela, ela sabe onde está cada coisa.
 
-Imagine uma cozinheira experiente. Ela abriu um novo restaurante. Dispôs louças, talheres, gadgets de uma forma que faz sentido para ela — cozinha é dela, ela erle.
+Mas o cliente sabe onde fica o menu? Os talheres estão onde o garçom espera? A organização dela é excelente **para ela** — e confusa para todos os outros.
 
-Mas o cliente sabe dónde colocou o menu? E os talheres estão onde o garçom espera? A organização dela é excellente para ela, mas confusa para outros.
+> [!TIP]
+> UX é a tradução dessa organização para quem usa — não para quem criou. Em software, devs facilmente colocam o botão no lugar "fácil para a implementação". Resultado: criar usuários que testam isso — muitas vezes eles sempre esperam o botão noutro lugar. Você precisa ouvir isso.
 
-UX é a traducao dessa organização para quem usa (não para quem criou).
+## Os 5 princípios fundamentais de UX
 
-Em software, hedo codeir facilmente coloca botão no lugar "fácil para a implementação".cação: criar usuários testa isso — muitas veces ele sempre espera o botão noutro lugar. Vcê precisa ouvir isso.
+Estes cinco princípios sobrevivem a qualquer framework e qualquer moda de design.
 
----
+### 1. Affordance
 
-## Funcionamento Técnico
-
-### 5 principios fundamentais
-
-#### 1. Affordance
-
-Affordance: o que o objeto sugere que faz.
+Affordance é o que o objeto **sugere** que faz.
 
 - Botão: apertável.
 - Link: clicável.
 - Slider: arrastável.
-- Button azul com texto "Submit": apertável + envia.
+- Botão azul com texto "Enviar": apertável + envia.
 
-Se um botão parece texto, ninguém clica. Se algo não é botão mas parece, ninguém clica nele.
+Se um botão parece texto, ninguém clica. Se algo não é botão mas parece, ninguém acerta.
 
-**Aplicação:** use estilos consistentes para elementos clicáveis. Texto azul em hover=cvlicável. Botão com border=ação.
+> [!TIP]
+> Use estilos consistentes para elementos clicáveis. Texto azul em hover = clicável. Botão com border = ação primária. Consistência ensina o usuário sem texto explicativo.
 
-#### 2. Feedback
+### 2. Feedback
 
 Cada ação do usuário precisa de resposta imediata.
 
-- Click no botão Salvar → estado loading aparece.
-- Dados carregando → skeleton, não texto "Carregando..."
+- Click em "Salvar" → estado loading aparece.
+- Dados carregando → skeleton, não o texto "Carregando...".
 - Erro → toast ou mensagem inline próxima ao erro.
-- Sucesso → confirmation visual (nada caiu silenciosamente).
+- Sucesso → confirmação visual (nada cai silenciosamente).
 
-**Aplicação:** todo botão com `disabled` state para loading. Toda carga > 300ms mostra loading skeleton.
+> [!IMPORTANT]
+> Todo botão deve ter estado `disabled` para loading. Toda carga acima de 300 ms mostra skeleton. Silent success é tão ruim quanto silent error — o usuário fica sem saber se funcionou.
 
-#### 3. Hierarchy Visual
+### 3. Hierarquia visual
 
-Olho humano lê em ordem. Clareza visual trilha.
+O olho humano lê em ordem. Clareza visual é trilha.
 
 - Título = maior, bold.
-- Subtítulo = medio, semi-bold.
-- Body = normal, lighter.
+- Subtítulo = médio, semi-bold.
+- Corpo = normal, lighter.
 
-Se tudo é mesmo tamanho, nada é lido.
+Se tudo é do mesmo tamanho, nada é lido.
 
-**Aplicação:** tamanho de fonte 3 níveis máx. Por página, contraste.
+> [!TIP]
+> Máximo de 3 níveis de fonte por página. Contraste entre níveis deve ser óbvio — não "só um pouquinho maior".
 
-#### 4. Consistency
+### 4. Consistência
 
-Se você usa边vermelha para erro em uma tela, use em todas. Se Salvar está no canto direito, esteja em todos os forms.
+Se você usa borda vermelha para erro numa tela, use em todas. Se "Salvar" fica no canto direito, esteja em todos os forms.
 
-**Aplicação:** design system (botões, inputs, colors, spacings) centralizados. Espeça os mesmos padrões.
+> [!SUCCESS]
+> Design system centralizado: botões, inputs, colors, spacings. Espelhe os mesmos padrões em todo o produto. Consistência é o que permite um usuário aprender uma tela e aplicar o que aprendeu em todas as outras.
 
-#### 5. Visibility of System State
+### 5. Visibilidade do estado do sistema
 
-Usuário precisa saber o que está acontecendo.
+O usuário precisa saber o que está acontecendo.
 
 - "Você está logado como X."
 - "3 resultados filtrados de 47."
-- "Last saved 3 minutes ago."
+- "Última gravação há 3 minutos."
 
 Invisibilidade gera desconforto. Visibilidade gera confiança.
 
-**Aplicação:** breadcrumb sempre. Status icons. Counters.
+> [!TIP]
+> Breadcrumb sempre que há hierarquia. Status icons. Counters. Se o usuário precisa perguntar "será que salvou?", o sistema falhou em comunicar.
 
-### Estados que toda UI deve ter
+| Princípio | Pergunta que responde |
+| --- | --- |
+| Affordance | "Isso parece fazer o que eu espero?" |
+| Feedback | "O sistema respondeu à minha ação?" |
+| Hierarquia | "Por onde eu leio primeiro?" |
+| Consistência | "Já vi isso antes?" |
+| Visibilidade | "O que está acontecendo agora?" |
 
-Para cada elemento de UI:
+## Estados que toda UI deve ter
 
-- **Default**: estado normal.
-- **Hover**: mouse over.
-- **Focus**: teclado chegou.
-- **Active**: clicando.
-- **Disabled**: não disponível.
-- **Loading**: esperando dados.
-- **Empty**: sem dados.
-- **Error**: erro.
-- **Success**: feito.
+Para cada elemento de UI, existem estados que precisam existir. A maioria não é opcional.
 
-90% dos devs implementam apenas Default e Error. Mas usuários que encontram os outros estados deixam de existir para seu aplicativo.
+| Estado | Quando aparece |
+| --- | --- |
+| Default | Estado normal, em repouso |
+| Hover | Mouse over |
+| Focus | Teclado chegou ao elemento |
+| Active | Sendo clicado |
+| Disabled | Indisponível no momento |
+| Loading | Esperando dados |
+| Empty | Sem dados |
+| Error | Algo falhou |
+| Success | Ação concluída |
 
-### Estados vazios são críticos
+> [!CAUTION]
+> 90% dos devs implementam apenas Default e Error. Mas usuários que encontram os outros estados deixam de existir para o seu aplicativo — porque desistem antes de chegar ao erro.
 
-Lista sem itens — você mostra o que? Em branco? "Sem dados"? Um tutorial?
+## O caso especial do empty state
 
-Excelente estilo: "Você ainda não criou nenhum projeto. [Butão: Criar projeto]"
+Lista sem itens — você mostra o quê? Tela em branco? "Sem dados"? Um tutorial?
 
-Pobre: "". Silent empty state = usuário perdido.
+- **Excelente**: "Você ainda não criou nenhum projeto. [Botão: Criar projeto]"
+- **Pobre**: `""` — silent empty state. Usuário perdido.
 
----
+> [!IMPORTANT]
+> Empty state é a primeira impressão da sua feature para todo novo usuário. Trate como onboarding, não como ausência. Call-to-action, não silêncio.
 
-## Exemplos
+```mermaid
+flowchart LR
+    A["Tela carregada"] --> B{"Tem dados?"}
+    B -- Sim --> C["Lista de itens"]
+    B -- Não --> D["Empty state com CTA"]
+    C --> E{"Ação falhou?"}
+    E -- Sim --> F["Estado de erro com causa + ação"]
+    E -- Não --> G["Estado de sucesso silencioso ou confirmado"]
+    classDef ok fill:#22c55e22,stroke:#22c55e66,color:#86efac
+    classDef ask fill:#f59e0b22,stroke:#f59e0b66,color:#fcd34d
+    classDef bad fill:#ef444422,stroke:#ef444466,color:#fca5a5
+    class C,G ok
+    class B,E ask
+    class F bad
+```
 
-### Exemplo 1: Form de cadastro
+## Exemplos: antes e depois
+
+### Exemplo 1 — Form de cadastro
 
 **Pobre:**
 
 ```
  nome: ____
-email: ____
-       [Cadastrar]
+ email: ____
+        [Cadastrar]
 ```
 
-Sem labels visíveis (label flutua só quando focado), semfeedback, no errors hints.
+Sem labels visíveis (a label flutua só quando focado), sem feedback, sem hints de erro.
 
 **Bom:**
 
@@ -154,18 +183,18 @@ Sem labels visíveis (label flutua só quando focado), semfeedback, no errors hi
 
  Seu email
  [email@exemplo.com]
- Erro: pode ser que haja typos no email
+ Pode haver typos no email — confira o domínio
 
  Senha (mínimo 8 caracteres)
  [senha]
- Fraca | Média | Forte → barra de força atualiza conforme digita
+ Fraca | Média | Forte  → barra de força atualiza conforme digita
 
- [✓ Cadastrar]  → desabilitado até tudo preenchido
+ [Cadastrar]  → desabilitado até tudo preenchido
 ```
 
-Diferenças: labels acima dosinputs, pistas ativas inline, progress feedback.
+Diferenças: labels acima dos inputs, pistas ativas inline, progress feedback.
 
-### Exemplo 2: Lista de itens com loading
+### Exemplo 2 — Lista com loading
 
 **Pobre:**
 
@@ -177,11 +206,14 @@ Diferenças: labels acima dosinputs, pistas ativas inline, progress feedback.
 **Bom:**
 
 ```
-[Mostra skeletons com TAMANHO相似的 a itens reais]
+[Mostra skeletons com tamanho similar aos itens reais]
 .. loading 200ms → fade-out skeletons, fade-in real items (300ms transition)
 ```
 
-### Exemplo 3: Mensagem de erro
+> [!TIP]
+> Skeleton tem que ter a *forma* do conteúdo real. Skeleton genérico de "caixinha" engana o olho e gera layout shift quando o conteúdo chega.
+
+### Exemplo 3 — Mensagem de erro
 
 **Pobre:**
 
@@ -198,102 +230,128 @@ Detalhe: Você atingiu o limite de notas privadas (50).
 [Upgrade] [Tentar novamente]
 ```
 
-Diferença: cause + alternativa.
+Diferença: causa + alternativa. Erro sem caminho é beco sem saída.
 
----
+| Mensagem | Causa? | Ação? |
+| --- | --- | --- |
+| "Algo deu errado." | Não | Não |
+| "Falha ao salvar." | Não | Não |
+| "Limite de 50 notas atingido. [Upgrade] [Tentar novamente]" | Sim | Sim |
+
+## Caso real de mercado
+
+UX não é decoração. É diferencial competitivo — principalmente em empresas product-led.
+
+> [!REFERENCE]
+> **Stripe** — famoso pelo "developer UX". Documentação incrível, API consistente, erros claros. Devs escolhem Stripe sem experimentar outras opções. UX é o motivo do lock-in.
+
+> [!REFERENCE]
+> **Linear** — construiu reputação de "rápido, fluido, sem fricção" puro sobre princípios de UX. Atalhos, feedback instantâneo, empty states que guiam. Nada decorativo — tudo princípio aplicado.
+
+> [!REFERENCE]
+> **Apple** — décadas refinando affordance, hierarquia e consistência. O Human Interface Guidelines virou referência copiada por todo app mobile.
+
+> [!REFERENCE]
+> **Notion** — criou um novo modelo de produto combinando UX de documento com UX de banco de dados. Cada_empty state ensina; cada bloco sugere o próximo.
+
+> [!CURIOSITY]
+> Em todas essas empresas, a função do designer não é "desenhar bonito". É **remover fricção**. Quanto menos o usuário percebe a interface, melhor a UX — porque ela some atrás da tarefa.
 
 ## Erros comuns
 
-### 🟢 Iniciantes
+> [!WARNING]
+> **1. Erro genérico "algo deu errado".**
+> Quase sempre há mais informação. Não use genérico por preguiça. Mostre ao menos: o que falhou (login? salvar? delete?) + a próxima ação possível.
 
-**1. Erro genérico "algo deu errado".**
+> [!WARNING]
+> **2. Botões sem estado loading.**
+> "Impaciente? Eu já cliquei 5 vezes!" Múltiplos submits geram registros duplicados. Use `disabled={loading}` e spinner no botão.
 
-Quase sempre há mais informação. Não use genérico por erleza. Mostre ao menos: o que falhou (login? salvar? delete?) + proxima ação.
+> [!WARNING]
+> **3. Sem empty state.**
+> Lista de "suas notas" sem notas: espaço em branco. Guie: "Você ainda não tem notas. [Criar uma]".
 
-**2. Botões sem estado loading.**
+> [!WARNING]
+> **4. Confundir responsividade com UI adaptativa.**
+> "Responsivo" = reduz/reesconde painéis ao encolher a janela. "Adaptativo" = oferece features diferentes em larguras diferentes (ex: atalho de long-press no mobile). Adaptar comportamento ao contexto é mais profundo do que encolher visualmente.
 
-"Impaciente? Eu já cliquei 5 vezes!" Multiplas submits gera registros duplicadas.
+> [!WARNING]
+> **5. Escolher cores sem contraste.**
+> Texto cinza claro em fundo cinza escuro — bonito? Talvez. Legível? Nem sempre. WCAG existe por razão de acessibilidade real. Mínimo AA: contraste 4.5:1 (checker em webaim.org/resources/contrastchecker).
 
-use `disabled={loading}` e spinner no botão.
+> [!WARNING]
+> **6. Esquecer edge cases de experiência.**
+> Implementam o fluxo principal lindo. E se o usuário do plano free clica em "Upgrade"? Behavior esperado? Sem escape hatches, a UX vira beco.
 
-**3. Sem estado vazio.**
-
-Lista de "suas notas" sem notas: espaço em branco. Guida! "Você ainda não tem notas. [Criar uma]"
-
-### 🟡 Intermediários
-
-**1. Confunde responsividade com adaptive UI.**
-
-"Responsivo": reduz janelas do notebook ao mobile. Esconde painel.
-"Adaptativo": oferece diferente features em width diferente. Entrega shortcuts no mobile (long-press).
-
-Reflexão profunda é adaptar comportamento ns to contexto, não encolher visualmente.
-
-**2. Escolhe cores sem contraste.**
-
-Texto cinza claro em fundo cinza escuro — beleza. Mas descobrir faction pour ler? Beach real: WCAG existe por razão litigation.
-
-`Checker.tips`: `webaim.org/resources/contrastchecker`. mínimo AA 4.5:1.
-
-### 🔵 Seniores
-
-**1. Esquecem "edge cases" de experiência.**
-
-Implementam fluxo principal lindo. Lopez: e se user com tunnel no plano free clique em "Upgrade"? Behavior esperado? Vazio escape hatches.
-
-**2. Juntellers com senso "prove user know".**
-
-Add tooltips em tudo. Tooltips são máscaras designersms para falta de clarity. Se puseram, é detail do que deviam ser reescrito.
-
----
+> [!WARNING]
+> **7. Encher tudo de tooltip.**
+> Tooltips são máscaras de design para falta de clareza. Se você precisou de tooltip, provavelmente o label deveria ser reescrito.
 
 ## Boas práticas
 
-### Como fazer
+> [!SUCCESS]
+> **Design system, mesmo mínimo.** Botão primário, secundário, erro, warning. Consistência nasce de um lugar central, não de copy-paste entre arquivos.
 
-- **Design system** mesmo mínimo: botão primário, secundário, erro, warning. Consistência.
-- **Skeletons** para loading > 300ms.
-- **Toast** para erros transient. Inline para errors de form.
-- **Empty states**: nunca em branco. Call-to-action.
+> [!SUCCESS]
+> **Skeletons para loading acima de 300 ms.** Abaixo disso, transição instantânea; acima, skeleton com a forma do conteúdo real.
 
-### Como manter
+> [!SUCCESS]
+> **Toast para erros transient; inline para erros de form.** Erro de form perto do campo; erro global no canto. Nunca o contrário.
 
-- **Auditoria UX**: a cada release, siga 1 flow faz crítico yourself. Toma puntos de fricção.
-- **Ferramentas**: Lighthouse faz audit UX básica. Sentry replay para ver gravações reais.
+> [!SUCCESS]
+> **Empty state com call-to-action.** Nunca em branco. O primeiro contato do usuário com a feature é o empty state.
 
-### Como testar
+> [!SUCCESS]
+> **Auditoria UX a cada release.** Você mesmo segue um fluxo crítico. Anote pontos de fricção. Não espere o usuário reclamar.
 
-- **5 usuários, navegando 10min. Onde param?** ParadosObserváveis tem respostas, não quartos.
-- **Heatmap**: Hotjar/Posthog mostram onde clicam e donde scroll.
+> [!SUCCESS]
+> **Ferramentas de observabilidade de UX.** Lighthouse faz audit de UX básica. Sentry Replay mostra gravações reais de sessões. Hotjar/Posthog mostram onde clicam e onde scrollam.
 
-### Como documentar
+> [!SUCCESS]
+> **Teste com 5 usuários reais.** Cinco pessoas navegando por 10 minutos revelam mais do que 50 suposições de quem construiu. Onde param, fazem pausas observáveis e têm respostas — não suposições de quem construiu.
 
-- **State inventário**: lista em markdown de todos states de cada componente.
-- **Design tokens**: em JSON, sincronizado entre Figma e CSS variables.
+> [!SUCCESS]
+> **State inventário em markdown.** Liste todos os estados de cada componente. Design tokens em JSON sincronizado entre Figma e CSS variables.
 
----
+## Resumo
 
-## Mundo Real
+O que você aprendeu neste módulo:
 
-### Onde aparece
+- **Dev precisa de UX.** Não precisa ser designer — precisa entender como humanos interpretam interfaces.
+- **5 princípios importam.** Affordance, feedback, hierarquia, consistência, visibilidade do estado.
+- **Estados não são opcionais.** Default, hover, focus, active, disabled, loading, empty, error, success. 90% dos devs só fazem dois.
+- **Empty state é onboarding.** Sem CTA, o usuário desiste antes de começar.
+- **Erro precisa de causa + ação.** "Algo deu errado" não é mensagem — é desistência.
+- **UX é diferencial competitivo.** Stripe, Linear, Apple, Notion vencem por fricção baixa — não por estética.
 
-Empresas product-led: Linear, Vercel, Supabase, Stripe. UX é diferente competitiva.
+> [!QUOTE]
+> "UX para dev é disciplina, não arte plástica. Princípios sobre affordance, feedback e estados podem ser aplicados por qualquer um. O que parece design diferenciado é, na verdade, execução — e execução prática é o que você vai fazer."
 
-Stripe é famoso por "developer UX". Doc é incrível, API consistente, errors claros. Devs escolhem Stripe sem experimentar outras.
+## Como isso aparece nos projetos da UGP
 
-### Quando usa
+Durante a Universidade Gratuita do Programador, a UX volta em cada projeto onde alguém vai usar o que você construiu:
 
-- Toda feature nova: pense em todos estados (default/loading/empty/error).
-- Toda refactor de UI: use A/B se possível; se não, colete feedback.
-- Todo component library: defina tokens e variantes.
+> [!TIP]
+> **Projeto 01 — To-Do.** Implemente todos os estados: empty (sem itens), 1 item, 50 itens, completed. Cada um com visual próprio.
 
----
+> [!TIP]
+> **Projeto 03 — Dashboard.** Handles de carregamento dos charts com skeletons. Nada de "Carregando..." — skeleton com a forma do gráfico.
 
-## Conexão com a UGP
+> [!TIP]
+> **Projeto 07 — SaaS de Notas.** Empty states com CTA ("Você ainda não tem notas. [Criar uma]"). Erros inline no form de auth, com causa próxima ao campo.
 
-- **Projeto 01 (Todo)**: estados — empty, 1 item, 50 itens, completed.
-- **Projeto 03 (Dashboard)**: handles loading de charts com skeletons.
-- **Projeto 07 (SaaS de Notas)**: empty states com CTA. Erros inline na auth form.
-- **Projeto 09 (LMS)**: estado de progresso visível para usuário ("Você está em 3 de 10 aulas").
+> [!TIP]
+> **Projeto 09 — LMS.** Estado de progresso visível para o usuário ("Você está em 3 de 10 aulas"). Visibilidade do estado do sistema na prática.
 
-> UX para dev é disciplina. Não artes plásticas. Princípios sobre affordance, feedback e estados trakathy mesmo qualquer um pode aplicar.oque queixo design diferenciado é execução — você vai entender execução prática.
+## Desafio
+
+> [!IMPORTANT]
+> Escolha um app que você usa todo dia (Linear, Notion, Spotify, iFood) e audite a UX em 5 minutos:
+>
+> 1. **Affordance.** Existe algum elemento que parece clicável mas não é? Algum botão que parece texto?
+> 2. **Feedback.** Click em algum botão demora a responder? Você fica sem saber se a ação foi registrada?
+> 3. **Hierarquia.** Qual é o título da tela? Dá pra distinguir de um subtítulo em 1 segundo?
+> 4. **Empty state.** Vá para uma lista vazia (limpe notificações, zere uma label). O que aparece? Há CTA?
+> 5. **Mensagens de erro.** Force um erro (senha errada, request off-line). A mensagem tem causa e ação?
+>
+> Anote 3 coisas que o app acerta e 3 que você faria diferente. O objetivo não é criticar — é desenvolver o olhar de UX. Quem enxerga fricção consegue removê-la no próprio código.

@@ -141,6 +141,14 @@ export interface ModuleMeta {
   technologies: string[]
   /** categorias/etiquetas curtas que aparecem no Hero */
   tags?: string[]
+  /** competências desenvolvidas — exibidas como ✓ no Hero */
+  competencies?: string[]
+  /** "Ao terminar este módulo você será capaz de..." — Missão do módulo */
+  mission?: string[]
+  /** módulos recomendados antes de começar (com link) */
+  prerequisites?: NextStepRef[]
+  /** módulos/conceitos relacionados (Conexões) */
+  connections?: NextStepRef[]
   /** resumo visual ao final, em cards */
   summary: SummaryCard[]
   /** checklist de-fixação */

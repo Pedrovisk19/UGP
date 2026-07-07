@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { Clock, BarChart3, FileCode2 } from 'lucide-react'
+import { Clock, BarChart3, FileCode2, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import type { ModuleMeta } from '@/types/ugp.types'
@@ -64,6 +64,19 @@ export function ModuleHero({ meta, groupLabel }: ModuleHeroProps) {
           </div>
           {meta.technologies.map((tech) => (
             <Badge key={tech} variant="blue" className="font-mono">{tech}</Badge>
+          ))}
+        </div>
+      )}
+
+      {meta.competencies && meta.competencies.length > 0 && (
+        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-[hsl(var(--muted-foreground))]">
+            Competências
+          </span>
+          {meta.competencies.map((c) => (
+            <span key={c} className="inline-flex items-center gap-1 text-[13px] text-[var(--text-secondary)]">
+              <CheckCircle2 className="h-3.5 w-3.5" style={{ color: 'var(--accent-green)' }} /> {c}
+            </span>
           ))}
         </div>
       )}

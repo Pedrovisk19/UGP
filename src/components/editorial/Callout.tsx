@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { Lightbulb, AlertTriangle, Rocket, XCircle, Brain, BookOpen, Lock, Zap, Quote, Info, CheckCircle2 } from 'lucide-react'
+import { Lightbulb, AlertTriangle, Rocket, XCircle, Brain, BookOpen, Lock, Zap, Quote, Info, CheckCircle2, Search } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export type CalloutKind =
@@ -10,6 +10,7 @@ export type CalloutKind =
   | 'success'   // 🚀 Boa prática
   | 'error'      // ❌ Erro comum
   | 'info'      // ℹ️ Nota
+  | 'important' // 🔍 Importante
   | 'curiosity' // 🧠 Curiosidade
   | 'reference' // 📚 Referência
   | 'security'  // 🔒 Segurança
@@ -22,6 +23,7 @@ const CALLOUT_STYLE: Record<CalloutKind, { icon: React.ElementType; label: strin
   success:    { icon: Rocket,          label: 'Boa prática',   fg: '#6ee7b7', bg: 'rgba(16,185,129,0.08)',  border: 'rgba(16,185,129,0.28)' },
   error:      { icon: XCircle,          label: 'Erro comum',    fg: '#fca5a5', bg: 'rgba(239,68,68,0.08)',   border: 'rgba(239,68,68,0.28)' },
   info:       { icon: Info,            label: 'Nota',          fg: '#a5b4fc', bg: 'rgba(99,102,241,0.08)',  border: 'rgba(99,102,241,0.28)' },
+  important:  { icon: Search,          label: 'Importante',    fg: '#93c5fd', bg: 'rgba(59,130,246,0.10)',  border: 'rgba(59,130,246,0.32)' },
   curiosity:  { icon: Brain,           label: 'Curiosidade',    fg: '#c4b5fd', bg: 'rgba(139,92,246,0.08)',  border: 'rgba(139,92,246,0.28)' },
   reference:  { icon: BookOpen,        label: 'Referência',     fg: '#93c5fd', bg: 'rgba(59,130,246,0.08)',  border: 'rgba(59,130,246,0.28)' },
   security:   { icon: Lock,            label: 'Segurança',      fg: '#fda4af', bg: 'rgba(244,114,182,0.08)', border: 'rgba(244,114,182,0.28)' },

@@ -1,162 +1,216 @@
-# Portfólio que Vende
-
-## Introdução
+## O que é um portfólio que vende
 
 Seu portfólio é a prova social da sua capacidade. CVs mentem. LinkedIn exagera. Portfólio não mente — porque o código está lá, acessível, julgável.
 
-Quando você termina este módulo, sabe o que colocar e o que NÃO colocar. E sabe auawei o porquê de cada escolha.
+> [!NOTE]
+> Quando você termina este módulo, sabe o que colocar e o que NÃO colocar no seu portfólio. E, principalmente, sabe o **porquê** de cada escolha. Decisão consciente é o que separa um portfólio que vende de um que apenas existe.
 
----
+## Contexto histórico da contratação
 
-## Contexto Histórico
+| Era | Critério dominante | O que se avaliava |
+| --- | --- | --- |
+| Curriculum (1990–2010) | PDF com formação e experiências | Onde trabalhou |
+| LinkedIn (2010–presente) | Networking + auto-declaração | Quem afirma você ser |
+| GitHub (2015–presente) | Código observável | O que você realmente constrói |
 
-### Era do Curriculum (1990-2010)
+LinkedIn adicionou networking, mas ainda é auto-declarativo: você afirma, sem prova. GitHub mudou o jogo — código é evidência, README é organização, commits são disciplina, issues são comunicação, PRs são colaboração.
 
-PDF com formação, experiências, contatos. Critério: onde trabalhou.
+> [!IMPORTANT]
+> Tudo isso é observável **sem você precisar abrir a boca**. O portfólio trabalha por você silenciosamente, 24h por dia, em qualquer fuso. Por isso ele é decisivo.
 
-### Era do LinkedIn (2010-presente)
+## Analogia: contratar um chef
 
-LinkedIn adiciona networking. Mas ainda é auto-declarativo: você afirma, sem prova.
+Imagine contratar um chef para seu restaurante.
 
-### Era do GitHub (2015-presente)
+**CV**: *"Cozinho há 5 anos. Trabalhei na Padaria da Lucia."*
+**LinkedIn**: o mesmo + 3 recomendações de amigos.
+**Portfólio**: *"Olha esses 5 pratos que cozinhei: têm foto, receita, ingredientes, fim de semana gasto nisso, e o prato final está aqui."*
 
-Empresas começam a olhar GitHub antes de entrevistar. Por quê? Código é evidência. README é organização. Commits são disciplina. Issues são comunicação. PRs são colaboração.
+> [!TIP]
+> Em software é igual. CV = indicação. LinkedIn = afirmação. GitHub = evidência. A contratação segue o caminho da evidência — porque é o único que reduz risco do contratante.
 
-Tudo isso é observável sem você precisa abrir a boca.
+## As 4 peças essenciais
 
----
+```mermaid
+flowchart TD
+    A["GitHub: código-fonte"] --> E["Portfólio que vende"]
+    B["Site próprio: 3-5 projetos"] --> E
+    C["LinkedIn atualizado"] --> E
+    D["Story: problema → solução → aprendizado"] --> E
+    classDef core fill:#8b5cf622,stroke:#8b5cf666,color:#c4b5fd
+    classDef feeder fill:#6366f122,stroke:#6366f166,color:#a5b4fc
+    class E core
+    class A,B,C,D feeder
+```
 
-## Explicação Intuitiva
+### 1. GitHub
 
-Imagine contratar um chef.
+Código-fonte, espinha dorsal. Sem branches abandonados, README bom, conventional commits, história limpa.
 
-**CV**: "Cozinho ha 5 anos. Trabalhei na Padaria da Lucia."
-**LinkedIn**: mesmo + 3 recomendações de amigos.
-**Portfólio**: "Olha esses 5 pratos que cozinhei: têm foto, receita, ingredientes, fim de semana gasto nisso, e o prato que ficou é lithium."
+### 2. Site próprio
 
-Sobre qual você decide contratar?
+Landing page com 3-5 projetos destacados. Pode ser o próprio Projeto 05 da UGP (Blog Pessoal) servindo como vitrine.
 
-Em software é igual. CV = indicação. LinkedIn = afirmação. GitHub = evidência.
+### 3. LinkedIn atualizado
 
----
+Na bio: *"Fullstack. Veja meus projetos em [site]"*. Recrutador que chega pelo LinkedIn deve achar o portfólio em um clique.
 
-## Funcionamento Técnico
+### 4. Story de cada projeto
 
-### 4 peças essenciais
+Três frases, sempre:
 
-1. **GitHub**: código. Sinatra. Sem branches abandonados, README bom, conventional commits.
-2. **Site próprio**: landing page com 3-5 projetos destacados. Pode ser no Projeto 05 da UGP (Blog Pessoal).
-3. **LinkedIn atualizado**: na bio, "Fullstack. Veja meus projetos em [site]".
-4. **Story**: para cada projeto, 3 frases — problema, solução, o que aprendeu.
+1. **Problema** — o que motivou o projeto.
+2. **Solução** — o que você construiu e como.
+3. **Aprendizado** — o que ficou de diferente depois.
 
-### O que destacar em cada projeto
+> [!NOTE]
+> Sem a story, o projeto é só código. Com a story, é um argumento de contratação. Recrutador não contrata código — contrata a pessoa que entende o que construiu.
 
-Cada projeto do seu portfólio deve ter:
+## O que destacar em cada projeto
 
-- **Nome**: específico. "Todo List" é genérico. "TaskFlow — gerenciador de tarefas por contexto" é melhor.
-- **Link produção**: app rodando online. SEMPRE. Sem isso, pessoas não vão clonarás.
-- **README**: problema, stack, decisões, como rodar, prints.
-- **Link GitHub**: código limpo, commits claros.
+Cada projeto do portfólio deve ter:
 
-### Quantoe projetos?
+- **Nome específico** — *"Todo List"* é genérico. *"TaskFlow — gerenciador de tarefas por contexto"* é melhor.
+- **Link de produção** — app rodando online. **SEMPRE**. Sem isso, ninguém vai clonar.
+- **README completo** — problema, stack, decisões, como rodar, prints.
+- **Link do GitHub** — código limpo, commits claros, história coerente.
 
-**Não mais que 5**. 3 excelentes > 10 médios. Recrutador não tem tempo para 10. Ele olha os 3 primeiros.
+### Quantos projetos?
+
+> [!IMPORTANT]
+> **Não mais que 5.** Três excelentes vencem dez médios. Recrutador não tem tempo para dez — ele olha os três primeiros e decide.
 
 Se seus 3 melhores são os 3 da UGP (projeto 01, 05 e 07), ótimo. Use-os.
 
----
+## Project card: ruim vs bom
+
+| Cartão ruim | Cartão bom |
+| --- | --- |
+| Nome: "Clone do Instagram" | Nome: "TaskFlow — tarefas por contexto" |
+| Sem link de produção | URL ativa em Vercel |
+| README: `npm install && npm run dev` | README: problema, stack, prints, decisões, ADR |
+| Branch `master` com 1 commit | Conventional commits, história limpa |
+| Sem prints, sem deploy | Prints, deploy URL, próximos passos |
+| Tutorial replicado | Decisões próprias, dados diferentes |
+
+> [!WARNING]
+> O cartão ruim não vende — ele só prova que você segue tutorial. O cartão bom prova que você toma decisões. Decisão é o sinal mais barato de senioridade.
+
+## Caso real de mercado
+
+> [!REFERENCE]
+> **Vercel, Supabase, Resend** — contratam direto via GitHub aberto. *"Show me your open source work"* é literalmente o processo seletivo em empresas modernas. Contribuição em OSS conta como experiência real.
+
+> [!REFERENCE]
+> **README-driven development** — projetos como `shadcn/ui`, `t3-oss/create-t3-app` e `biomejs/biome` viraram referência de mercado não só pelo código, mas pela qualidade da documentação. README premium é portfólio profissional.
+
+> [!CURIOSITY]
+> Muitos devs foram contratados por um único README bem escrito. Não por saber mais — por se comunicar melhor. Documentação é habilidade técnica subestimada.
+
+## Quando o portfólio aparece
+
+- **Aplicando a vaga**: 1ª roda = código aberto do candidato. 2ª = portfólio é avaliado em detalhe.
+- **Networking**: alguém pergunta *"o que você faz?"* → link para seu site.
+- **Ofertas inesperadas**: empresas encontram devs pelos projetos públicos — sem processo seletivo formal.
+
+> [!TIP]
+> Toda vaga moderna exige portfólio. Mesmo as que não explicitam. Recrutador sempre olhará o GitHub antes da entrevista técnica.
 
 ## Erros comuns
 
-### 🟢 Iniciantes
+> [!WARNING]
+> **1. Repositórios de tutorial.**
+> Todo app React com "Clone do Instagram" de tutorial de YouTube: zero valor. Mostra que você segue instruções, não que você constrói. Sua versão do projeto da UGP é diferente — porque você toma decisões.
 
-**1. Repositórios de tutorial.**
+> [!WARNING]
+> **2. README "rodando: `npm install && npm run dev`".**
+> Sem problema, sem prints, sem decisões, sem aprendizado. Isso é README de código, não de portfólio. README de portfólio tem: objetivo, stack, prints, deploys, desafios. 1 página, fácil de ler.
 
-Todo React app com "Clone do Instagram" de YouTube tutorial: zero valor. Mostra que você segue instruções, não que você constrói.
+> [!WARNING]
+> **3. Projetos sem link de produção.**
+> *"Roda localmente com `npm run dev`."* Ninguém roda. Recrutadores têm 30 segundos. Vercel é grátis.
 
-Sua versão do projeto da UGP é diferente — porque você toma decisões.
+> [!WARNING]
+> **4. Quantidade sobre qualidade (intermediários).**
+> 20 projetos medianos, todos clones de tutorial, nenhum com README, nenhum com teste. Refatore: 5 excelentes com CI, README, 1 com ADR, 1 com teste E2E.
 
-**2. README "rodando: npm install && npm run dev".**
+> [!WARNING]
+> **5. Projeto final sem manutenção.**
+> Bootcamp: projeto final bonito. Acabou o bootcamp, abandonou. Dois anos depois, o potencial empregador olha: desatualizado. React 16 → 19 pulou, build quebra. Mantenha pelo menos 2 projetos atualizados.
 
-Sem o quê. Sem prints. Sem decisões. Sem "o que aprendi". Isso é README de código, não de portfólio.
+> [!WARNING]
+> **6. Esconder trabalho (sêniores).**
+> *"Esse é código da empresa, não posso mostrar."* OK. Construa side-projects que mostrem skills. Sênior sem portfólio parece júnior mitado.
 
-README de portfólio tem: objetivo, stack, prints, deploys, desafios. 1 página, fácil de ler.
-
-**3. Projetos sem produção link.**
-
-"Roda localmente com `npm run dev`." Ninguém rod. Recrutadores tem 30 segundos. Vercel é grátis.
-
-### 🟡 Intermediários
-
-**1. Quantidade sobre qualidade.**
-
-20 projetos medianos. Cada um clone tutorial. Nenhum tem README. Nenhum tem teste.
-
-Refatore: 5 excelentes com CI, README, 1 com ADR, 1 com teste E2E.
-
-**2. Projeto final sem manutenção.**
-
-Bootcamp: projeto final bonito. Depois bootcamp acabou, abandou. 2 anos depois, potencial empregador olha: outdated. React 16 → 19 pulou, build quebra.
-
-Mantenha pelo menos 2 projetos atualizados.
-
-### 🔵 Seniores
-
-**1. Escondem trabalho.**
-
-"Esse é código da empresa, não posso mostrar." OK. Construa sideprojects que showcase skills. Senior sem portfólio parece júnior mitado.
-
-**2. Não têm narrais técnicos.**
-
-LinkedIn afirma "Arquiteto de Sistemas". Portfólio não tem ADR, diagrama. Seniores deviam ter isso — provam senioridade.
-
----
+> [!WARNING]
+> **7. Não ter narrativas técnicas (sêniores).**
+> LinkedIn afirma *"Arquiteto de Sistemas"*. Portfólio não tem ADR, não tem diagrama. Sêniores deveriam ter isso — é o que prova senioridade.
 
 ## Boas práticas
 
-### Como fazer
+> [!SUCCESS]
+> **3-5 projetos, não mais.** Três excelentes > dez médios.
 
-- **3-5 projetos, não mais**
-- **Cada um com produção URL ativa**
-- **README de 80-150 linhas**: problema, stack, parte legal, prints, próxima feature
-- **Último commit < 6 meses atrás**
+> [!SUCCESS]
+> **Cada um com URL de produção ativa.** Vercel, Netlify, Cloudflare Pages — todos têm plano grátis.
 
-### Como manter
+> [!SUCCESS]
+> **README de 80-150 linhas**: problema, stack, parte legal, prints, próxima feature.
 
-- Atualize 1 versão/ano por projeto mantido
-- Stale projects → marcar como "arquivado" no GitHub (não deletar: histórico tem valor)
+> [!SUCCESS]
+> **Último commit < 6 meses atrás.** Stale = abandonado. Mantenha pelo menos 2 projetos vivos.
 
-### Como escalar
+> [!SUCCESS]
+> **Atualize 1 versão/ano por projeto mantido.** Stale projects → marque como *"arquivado"* no GitHub (não deletar: histórico tem valor).
 
-- Adicione métricas: 1 projeto com Sentry, 1 com analytics (Posthog). Mostra senioridade na prática.
-- Apresente ARquitecturally: 1 projeto com diagrama C4 e 3 ADRs no `docs/`.
+> [!SUCCESS]
+> **Adicione métricas.** 1 projeto com Sentry, 1 com analytics (Posthog). Mostra senioridade na prática.
 
-### Como testar seus portfólio
+> [!SUCCESS]
+> **Apresente arquiteturalmente.** 1 projeto com diagrama C4 e 3 ADRs no `docs/`. Isso é diferencial de sênior.
 
-Pergunte a um amigo dev: "Em 30 segundos, você contrataria? Por quê?" Respostas em 30 segundos. Output é verdade real sobre a apresentação.
+> [!SUCCESS]
+> **Teste seu portfólio.** Pergunte a um amigo dev: *"Em 30 segundos, você contrataria? Por quê?"* A resposta em 30 segundos é a verdade real sobre a sua apresentação.
 
----
+## Resumo
 
-## Mundo Real
+O que você aprendeu neste módulo:
 
-### Onde aparece
+- **Portfólio é evidência.** CV mente, LinkedIn exagera, código não mente — porque está acessível.
+- **4 peças essenciais**: GitHub, site próprio, LinkedIn, story de cada projeto.
+- **3-5 projetos, nunca mais.** Três excelentes vencem dez médios.
+- **Cada projeto com**: nome específico, link de produção, README completo, GitHub limpo.
+- **Decisão é o sinal barato de senioridade.** Tutorial replicado não vende; decisão própria vende.
+- **Mantenha vivo.** Projeto desatualizado vence qualquer portfólio — para o lado errado.
 
-Toda vaga de dev moderna exige portfólio. Mesmo as que não explicitam.
+> [!QUOTE]
+> "Portfólio é código falando por você. Silenciosamente. O tempo todo. Não precisa intervir na entrevista, precisa entrevistar bem."
 
-Empresas como Vercel, Supabase, Resend contratam direto via GitHub тело. "Show me your open source work."
+## Como isso aparece nos projetos da UGP
 
-### Quando usa
+Durante a UGP, cada projeto é uma peça de portfólio em potencial. Você decide quais viram os destaques:
 
-- Aplicando a vaga: 1ª wheel = código aberto dele. 2ª = seu portfólio é avaliado.
-- Networking: alguém pergunta "o que você faz?" → link para seu site.
-- Unexpected job offers: he конкурс from companies based on your projects public.
+- Quais projetos terão README premium?
+- Quais terão link de produção ativo?
+- Quais terão ADR e diagrama C4?
+- Quais você vai manter vivos nos próximos 12 meses?
 
----
+> [!TIP]
+> **Projeto 05 — Blog Pessoal MDX.** Use COMO seu site de portfólio. É vitrine e projeto ao mesmo tempo.
 
-## Conexão com a UGP
+> [!TIP]
+> **Projetos 01, 05 e 07.** Comece com estes 3 selecionados: 01 (CRUD), 05 (frontend + SEO), 07 (fullstack + auth). Eternize esses.
 
-- **Projeto 05 (Blog Pessoal MDX)**: use COMO seu site de portfólio
-- **Projetos 01-09**: cada um é uma peça.
-- Comece com **3 projetos selecionados**: 01 (CRUD), 05 (frontend + SEO), 07 (fullstack + auth). Eternize esses.
+## Desafio
 
-> Portfólio é código falando por você. Silenciosamente. O tempo todo.ュ: nao precisa intervir numa entrevista, precisa entrevistar bem.
+> [!IMPORTANT]
+> Escolha um dos seus projetos atuais (ou um projeto da UGP em andamento) e execute:
+>
+> 1. **Renomeie** o projeto para algo específico, não genérico.
+> 2. **Deploy** em URL pública ativa (Vercel grátis).
+> 3. **Reescreva o README** em 80-150 linhas: problema, stack, parte legal, prints, próximos passos.
+> 4. **Escreva a story** em 3 frases: problema, solução, aprendizado.
+> 5. **Peça a um amigo dev** para olhar 30 segundos e responder: *"contrataria? por quê?"*
+> 6. **Anote a resposta** e ajuste o portfólio com base no feedback.
+
+Não precisa de tudo perfeito. O objetivo é instalar o hábito de **tratar cada projeto como argumento de contratação**, não como exercício esquecido.

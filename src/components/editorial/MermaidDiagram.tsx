@@ -57,6 +57,8 @@ export function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
           }
         } catch (e: any) {
           if (!cancelled) {
+            // Loga no console para o autor diagnosticar — sem exibir na tela.
+            console.error('[MermaidDiagram] falha ao renderizar diagrama:', e?.message ?? e, '\nFonte:\n', chart)
             setError(e?.message ?? 'diagrama inválido')
             setSvg(null)
           }
@@ -75,10 +77,15 @@ export function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
         </figcaption>
       )}
       <div className="overflow-x-auto p-4 [&_svg]:max-w-full [&_svg]:mx-auto mermaid-host">
-        {error ? (
-          <pre className="overflow-x-auto rounded bg-[rgba(239,68,68,0.08)] p-3 text-[12px] text-rose-300">{error}\n\n{chart}</pre>
-        ) : svg ? (
+        {svg ? (
           <div dangerouslySetInnerHTML={{ __html: svg }} />
+        ) : error ? (
+          // Erros de parse NUNCA são exibidos na tela para o leitor final.
+          // Mostramos apenas um placeholder discreto; o erro segue disponível
+          // no console do dev para diagnóstico do autor do conteúdo.
+          <div className="py-6 text-center text-[12px] text-[hsl(var(--muted-foreground))]">
+            Diagrama indisponível
+          </div>
         ) : (
           <div className="animate-pulse text-[12px] text-[hsl(var(--muted-foreground))]">Renderizando diagrama…</div>
         )}

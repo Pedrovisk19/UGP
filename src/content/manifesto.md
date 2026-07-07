@@ -1,28 +1,26 @@
-# Manifesto da UGP
+## O problema silencioso da educação de software
 
-## Introdução
+Existe um problema que quase ninguém fala abertamente.
 
-Existe um problema silencioso na educação de software que quase ninguém fala abertamente.
-
-A maioria dos cursos, bootcamps e tutoriais ensina **sintaxe**. Ensinam como declarar uma variável, como fazer um loop, como criar um componente React. Isso é importante — não sei escrever sem antes conhecer o alfabeto. Mas sintaxe é o alfabeto. Engenharia é a capacidade de escrever um livro.
+A maioria dos cursos, bootcamps e tutoriais ensina **sintaxe**. Ensinam como declarar uma variável, como fazer um loop, como criar um componente React. Isso é importante — ninguém escreve um livro sem antes conhecer o alfabeto. Mas sintaxe é o alfabeto. Engenharia é a capacidade de escrever o livro.
 
 A diferença entre alguém que sabe programar e alguém que é engenheiro de software não está na linguagem que domina. Está na capacidade de **tomar decisões técnicas defensáveis**, **prever consequências**, **escolher trade-offs conscientemente** e **assumir responsabilidade técnica** sobre o que constrói.
 
 A UGP — Universidade Gratuita do Programador — existe para resolver exatamente isso.
 
-> **Cursos ensinam sintaxe. Projetos ensinam engenharia.**
+> [!IMPORTANT]
+> Cursos ensinam sintaxe. Projetos ensinam engenharia. Esta frase não é slogan — é a tese central de todo o material que você vai ler daqui para frente.
 
-Esta frase não é slogan. É a tese central de todo o material que você vai ler daqui para frente.
+## Por que esse assunto existe
 
-### Por que esse assunto existe
+Toda profissão tem um caminho de aprendizado.
 
-Toda profissão tem um caminho de aprendizado. Na medicina, você não começa operando — você observa, depois pratica em cadáveres, depois em animais, depois em pacientes com supervisão, e só então opera sozinho.
-
-Na engenharia civil, você não constrói uma ponte no primeiro dia de faculdade. Você aprende física, materiais, cálculo estrutural — para que, quando construir a ponte, ela não caia.
+Na medicina, você não começa operando. Você observa, depois pratica em cadáveres, depois em animais, depois em pacientes com supervisão, e só então opera sozinho. Na engenharia civil, você não constrói uma ponte no primeiro dia de faculdade — aprende física, materiais, cálculo estrutural, para que a ponte não caia.
 
 Na engenharia de software, curiosamente, é comum alguém aprender a fazer um botão em React e ser jogado num time para construir um sistema financeiro. Sem base. Sem mentoria. Sem entender trade-offs.
 
-A UGP propõe um caminho diferente: **aprender construindo projetos corporativos reais, com conteúdo profundo sustentando cada decisão**.
+> [!NOTE]
+> A UGP propõe um caminho diferente: **aprender construindo projetos corporativos reais, com conteúdo profundo sustentando cada decisão**.
 
 ### Quem precisa disso
 
@@ -34,17 +32,40 @@ A UGP propõe um caminho diferente: **aprender construindo projetos corporativos
 
 Se você está em qualquer um desses grupos, a UGP foi escrita para você.
 
----
+## Analogia: aprender a cozinhar
 
-## Contexto Histórico
+Imagine que você quer aprender a cozinhar.
+
+**O curso tradicional** de programação equivaleria a te ensinar: "isso é uma faca", "isso é uma panela", "isso é fogo". Você decora a função de cada utensílio. Sabe nomear tudo. Mas não sabe fazer um omelete.
+
+**O bootcamp** te ensinaria: "segue essa receita de omelete. Agora essa de lasanha. Pronto, você é cozinheiro." Você faz, mas não entende — se a lasanha queimar, você não sabe por quê. Se o omelete solar, você não sabe corrigir.
+
+**O conteúdo rápido** te ensinaria: "5 truques para um omelete perfeito!" Você pratica os 5 truques mas não entende o que faz o omelete ser bom ou ruim.
+
+> [!TIP]
+> A UGP faz diferente. Ensina **por que** cozinhar é transformar comida com calor, por que ovos coagulam a certa temperatura, como escolher a panela certa, receitas que você **entende** — não decora. O que fazer quando dá errado. Trade-offs: tempo vs. textura, simplicidade vs. sofisticação. No final, você não segue receitas. **Você escreve receitas.**
+
+Isso é a diferença entre programador e engenheiro.
+
+## Como chegamos aqui — quatro eras do ensino de software
 
 Para entender por que a UGP é necessária, precisamos entender como chegamos aqui.
+
+```mermaid
+timeline
+    title Quatro eras do ensino de software
+    1970-1990 : Autodidata : manuais, código alheio, profundidade forçada
+    1990-2010 : Cursos : tutoriais e livros democratizam o acesso
+    2010-2020 : Bootcamps : 6 meses para fullstack, mínimo viável
+    2020-Hoje : Conteúdo rápido : vídeo de 10min, thread, descartável
+```
 
 ### A era do autodidata (1970-1990)
 
 Nos primórdios da computação, não havia courses. Você lia manuais, lia código de outros, e tentava. O aprendizado era lento, doloroso, mas **profundo** — porque você não tinha escolha a não ser entender o que estava acontecendo debaixo do capô.
 
-Programadores dessa geração frequentemente tinham uma base sólida porque **não atalho existia**. Se você não entendesse como a memória funcionava, seu programa crashava e você não sabia por quê.
+> [!INFO]
+> Programadores dessa geração frequentemente tinham base sólida porque **nenhum atalho existia**. Se não entendesse como a memória funcionava, seu programa crashava e você não sabia por quê.
 
 ### A era dos cursos (1990-2010)
 
@@ -52,13 +73,15 @@ Com a popularização da internet, surgiram tutoriais, livros e courses. Isso de
 
 Tutoriais mostravam você copiando código linha por linha. Funcionava? Sim. Você entendia? Não. Mas funcionava, e isso era suficiente para sentir progresso.
 
-O problema é que "funciona" não significa "está correto". E quando "funciona mas está incorreto" chega em produção, as consequências são reais.
+> [!CAUTION]
+> "Funciona" não significa "está correto". E quando "funciona mas está incorreto" chega em produção, as consequências são reais.
 
 ### A era dos bootcamps (2010-2020)
 
 Bootcamps aceleraram o processo. Em 6 meses, você saía "desenvolvedor fullstack". Isso produziu muitos profissionais capazes rapidamente — mas também produziu muita gente que sabia o **mínimo viável** para passar em uma entrevista.
 
 O resultado: desenvolvedores que conseguiam o emprego, mas travavam quando precisavam:
+
 - Tomar uma decisão arquitetural sem tutorial
 - Debugar um problema que não estava no Stack Overflow
 - Entender por que algo que "funcionava" em desenvolvimento quebrava em produção
@@ -68,45 +91,23 @@ O resultado: desenvolvedores que conseguiam o emprego, mas travavam quando preci
 
 Hoje vivemos a era do vídeo de 10 minutos, do thread de Twitter, do "5 dicas para...". Conteúdo desenfreado, raso, descartável.
 
-Isso não é ruim por si só — é eficiente para descobrir se algo existe. Mas é péssimo para **domínio**. Domínio exige profundidade. Profundidade exige tempo. Tempo é o que o conteúdo rápido se recusa a dar.
+Isso não é ruim por si só — é eficiente para descobrir se algo existe. Mas é péssimo para **domínio**.
+
+> [!WARNING]
+> Domínio exige profundidade. Profundidade exige tempo. Tempo é o que o conteúdo rápido se recusa a dar.
 
 ### Onde a UGP se posiciona
 
 A UGP é um retorno à profundidade — mas com acesso democratizado. É a combinação que faltou:
 
-- **Profundidade** como nos primórdios (entender o porquê)
-- **Acesso** como na era dos courses (gratuito, online)
-- **Estrutura** como nos bootcamps (caminho claro)
-- **Prática** como no mundo real (projetos que simulam empresas)
+| Era | O que a UGP herda |
+| --- | --- |
+| Autodidata | **Profundidade** — entender o porquê |
+| Cursos | **Acesso** — gratuito, online |
+| Bootcamps | **Estrutura** — caminho claro |
+| Mundo real | **Prática** — projetos que simulam empresas |
 
----
-
-## Explicação Intuitiva
-
-Imagine que você quer aprender a cozinhar.
-
-**O curso tradicional de programação** equivaleria a te ensinar: "isso é uma faca", "isso é uma panela", "isso é fogo". Você decora a função de cada utensílio. Sabe nomear tudo. Mas não sabe fazer um omelete.
-
-**O bootcamp** te ensinaria: "segue essa receita de omelete. Agora essa de lasanha. Pronto, você é cozinheiro."Você faz, mas não enti... — se a lasanha queimar, você não sabe por quê. Se o omelete solar, você não sabe corrigir.
-
-**O conteúdo rápido** te ensinaria: "5 truques para um omelete perfeito!" Você pratica os 5 truques mas não enti... o que faz o omelete ser bom ou ruim.
-
-**A UGP** faz diferente. Te ensina:
-
-1. Por que cozinhar é transformar comida com calor — o que acontece na molécula
-2. Por que ovos coagulam a certa temperatura — e o que acontece se passar
-3. Como escolher a panela certa — e por que isso importa
-4. Receitas que você entende — não decora
-5. O que fazer quando dá errado — porque vai dar errado
-6. Trade-offs: tempo vs. textura, simplicidade vs. sofisticação
-
-No final, você não segue receitas. **Você escreve receitas.**
-
-Isso é a diferença entre programador e engenheiro.
-
----
-
-## Funcionamento Técnico
+## Os três pilares da UGP
 
 A UGP tem três pilares que sustentam todo o aprendizado. Entenda cada um.
 
@@ -121,13 +122,12 @@ Cada módulo que você lê aqui segue uma estrutura rigorosa:
 - **Erros que iniciantes, intermediários e seniores cometem** (realismo)
 - **Onde isso aparece em empresas** (conexão com realidade)
 
-Isso significa que você não vai ler "como criar uma rota em Next.js". Você vai ler "Por que routing existe, qual problema resolve, como evoluiu, quando usar cada estratégia, e quais trade-offs cada uma traz."
-
-Se você só quer o "como", existem 1000 vídeos no YouTube. Se você quer **entender**, isso é o lugar.
+> [!NOTE]
+> Isso significa que você não vai ler "como criar uma rota em Next.js". Você vai ler "por que routing existe, qual problema resolve, como evoluiu, quando usar cada estratégia, e quais trade-offs cada uma traz". Se você só quer o "como", existem 1000 vídeos no YouTube. Se você quer **entender**, isso é o lugar.
 
 ### Pilar 2 — Projetos corporativos reais
 
-Os 10 projetos da UGP não são "todo list" ou "calculadora". São:
+Os 10 projetos da UGP não são "todo list" ou "calculadora". São sistemas que existem em empresas reais:
 
 - Um **SaaS de notas com auth e RLS** — você aprende segurança real
 - Um **dashboard de vendas** — você aprende visualização de dados
@@ -135,7 +135,8 @@ Os 10 projetos da UGP não são "todo list" ou "calculadora". São:
 - Um **LMS (plataforma de courses)** — você aprende progressão e testes
 - Um **clone minimal do Supabase** — você aprende o que é um BaaS por dentro
 
-Cada projeto é o tipo de sistema que existe em empresas reais. Quando você termina, você tem não só código — tem **experiência equivalente a meses de trabalho**.
+> [!TIP]
+> Quando você termina, você tem não só código — tem **experiência equivalente a meses de trabalho**.
 
 ### Pilar 3 — Progressão por níveis
 
@@ -146,19 +147,14 @@ A UGP tem 8 níveis, do "Extremo Iniciante" ao "Sênior". Cada nível define:
 - **Como saber que dominou** (métrica de saída)
 - **O que precisa dominar** (checklist de avanço)
 
-Isso te dá um caminho. Não um caminho vago como "vire um desenvolvedor fullstack". Um caminho concreto: "se você consegue X, Y e Z, você está pronto para o nível seguinte".
+> [!IMPORTANT]
+> Isso te dá um caminho — não vago como "vire um desenvolvedor fullstack", mas concreto: "se você consegue X, Y e Z, você está pronto para o nível seguinte". A progressão é **gamificada sem ser infantil**: XP, níveis, projetos desbloqueados. Mas o XP não é concessão — é reflexo de que você realmente construiu.
 
-A progressão é **gamificada sem ser infantil**. Você ganha XP, sobe de nível, desbloqueia projetos. Mas o XP não é concessão — é reflexo de que você realmente construiu.
+## Exemplo concreto: implementar autenticação
 
----
+Para ilustrar a diferença entre aprender por aqui vs. aprender por tutorial, vejamos um caso real.
 
-## Exemplos
-
-Para ilustrar a diferença entre aprender por aqui vs. aprender por tututorial, vejamos um caso concreto.
-
-### Cenário: você precisa implementar autenticação
-
-**O que um tutorial 10Min faria:**
+### O que um tutorial de 10 minutos faria
 
 ```text
 1. npm install next-auth
@@ -170,189 +166,169 @@ Para ilustrar a diferença entre aprender por aqui vs. aprender por tututorial, 
 
 Você faz. Funciona. Boa sorte para debugar quando o token expira em produção.
 
-**O que a UGP faria:**
+### O que a UGP faz
 
-Primeiro, te explica por que autenticação existe. O que o HTTP é stateless (não guarda quem você é entre requests). Por que isso é um problema — como a web sabia que você é você?
+Primeiro, te explica **por que** autenticação existe. O que é HTTP stateless (não guarda quem você é entre requests). Por que isso é um problema — como a web sabia que você é você?
 
 Depois, te mostra as estratégias que existem:
-- **Sessões no servidor** (cookies, server-side)
-- **Tokens JWT** (stateless, escalável, mas com trade-offs)
-- **OAuth** (por que delegar identidade a um terceiro)
 
-Cada uma com prós e contras. Trade-offs.
+| Estratégia | Característica |
+| --- | --- |
+| Sessões no servidor | Cookies, server-side, estado guardado |
+| Tokens JWT | Stateless, escalável, mas com trade-offs |
+| OAuth | Delegar identidade a um terceiro |
 
-Depois, te mostra como Supabase Auth resolve: combina JWT com RLS no banco — você depois entende não só como, mas por quê.
+Cada uma com prós e contras. Trade-offs. Depois, te mostra como Supabase Auth resolve: combina JWT com RLS no banco — você entende não só como, mas por quê.
 
 Depois te faz construir o Projeto 07 (SaaS de Notas com Auth). Você implementa. Quebra. Conserta. Entende.
 
-No final, se um entrevistador perguntar "por que você usou JWT e não sessões?", você não responde "porque o tutorial mandou". Você responde com trade-offs.
-
----
+> [!SUCCESS]
+> No final, se um entrevistador perguntar "por que você usou JWT e não sessões?", você não responde "porque o tutorial mandou". Você responde com trade-offs.
 
 ## Erros comuns
 
-### 🟢 O que iniciantes fazem
+### O que iniciantes fazem
 
-**1. Pulam a teoria para chegar no código rápido.**
+> [!WARNING]
+> **1. Pulam a teoria para chegar no código rápido.**
+> A ansiedade de "eu quero logo programar" faz você pular parágrafos que explicam o porquê. Isso funciona por 2 semanas. Depois, quando algo quebra e você não entende — você volta ao início. Reserve tempo para ler. **Código sem entendimento é dívida técnica.**
 
-A ansiedade de "eu quero logo programar" faz você pular parágrafos que explicam o porquê. Isso funciona por 2 semanas. Depois, quando algo quebra e você não enti... — você volta ao início.
+> [!WARNING]
+> **2. Acham que seguir um tutorial = aprender.**
+> Seguir é reconhecer. Aprender é reproduzir sem o tutorial. Se você seguiu um tutorial de React e fez um app, tente refazer sem olhar. Você vai descobrir o quanto realmente aprendeu.
 
-Reserve tempo para ler. Código sem entendimento é dívida técnica.
+> [!WARNING]
+> **3. Não documentam o que aprendem.**
+> Anotar é parte do aprendizado. Se você leu sobre X e não consegue explicar X em 3 frases para um amigo, você não aprendeu X — você leu sobre X.
 
-**2. Acham que seguir um tutorial = aprender.**
+### O que intermediários fazem
 
-Seguir é reconhecer. Aprender é reproduzir sem o tutorial. Se você seguiu um tutorial de React e fez um app, tente refazer sem olhar. Você vai descobrir o quanto realmente aprendeu.
+> [!WARNING]
+> **1. Trocam de tecnologia a cada 2 meses.**
+> A cultura do "novo framework" faz você pular de Angular para Vue para React para Svelte sem dominar nenhum. Parar em uma escolha não é fraqueza — é maturidade. O Projeto 05 da UGP (Blog Pessoal) te força a escolher e ir a fundo. Lute contra o impulso de trocar.
 
-**3. Não documentam o que aprendem.**
+> [!WARNING]
+> **2. Não escrevem testes.**
+> "Testes são para depois." Não. Testes são parte do código. O Projeto 09 (LMS) te obriga a ter cobertura de testes. Se você não testar, você não construiu profissionalmente.
 
-Anotar é parte do aprendizado. Se você leu sobre X e não consegue explicar X em 3 frases para um amigo, você não aprendeu X — você leu sobre X.
+> [!WARNING]
+> **3. Acham que sabem porque funcionou.**
+> "Funcionou e eu não sei por quê" é um sinal de alerta, não de sucesso. Se algo funcionou "por acidente", investigue. Pode funcionar agora e quebrar com novos dados.
 
-### 🟡 O que intermediários fazem
+### O que seniores evitam
 
-**1. Trocam de tecnologia a cada 2 meses.**
+> [!WARNING]
+> **1. Não decidem sem documentar o porquê.**
+> Toda decisão técnica é registrada em uma ADR (Architecture Decision Record). Se ninguém sabe por que a equipe usou Postgres em vez de Mongo, a próxima pessoa a tocar o código vai questionar — ou pior, trocar sem entender.
 
-A cultura do "novo framework" faz você pular de Angular para Vue para React para Svelte sem dominar nenhum. Parar em uma escolha não é fraqueza — é maturidade.
+> [!WARNING]
+> **2. Não confiam apenas em "funciona".**
+> "Funciona" é o segundo retrogravado. O primeiro é "entendo por quê funciona e por quê pode parar".
 
-O Projeto 05 da UGP (Blog Pessoal) te força a escolher e ir a fundo. Lute contra o impulso de trocar.
-
-**2. Não escrevem testes.**
-
-"Testes sao para depois." Não. Testes sao parte do código. O Projeto 09 (LMS) te obriga a ter cobertura de testes. Se você não testar, você não construiu profissionalmente.
-
-**3. Acham que sabem porque funcionou.**
-
-"Funcionou e eu não sei por quê" é um sinal de alerta, não de sucesso. Se algo funcionou "por acidente", investigue. Pode funcionar agora e quebrar com novos dados.
-
-### 🔵 O que seniores evitam
-
-**1. Não decidem sem documentar o porquê.**
-
-Toda decisão técnica é registrada em uma ADR (Architecture Decision Record). Se ninguém sabe por que a equipe usou Postgres em vez de Mongo, a próxima pessoa a tocar o código vai questionar — ou pior, trocar sem entender.
-
-**2. Não confiam apenas em "funciona".**
-
-"Funciona" é o segundo retrogravado. O primeiro é "entendo por quê funciona e por quê pode parar".
-
-**3. Não pulam o teste de hipóteses.**
-
-Antes de reescrever um sistema, um sênior valida: o problema é arquitetura ou implementação? Às vezes a arquitetura está certa e a implementação que está ruim. Trocar arquitetura para resolver bug de implementação é um erro caro.
-
----
+> [!WARNING]
+> **3. Não pulam o teste de hipóteses.**
+> Antes de reescrever um sistema, um sênior valida: o problema é arquitetura ou implementação? Às vezes a arquitetura está certa e a implementação que está ruim. Trocar arquitetura para resolver bug de implementação é um erro caro.
 
 ## Boas práticas
 
 ### Como usar a UGP
 
-**1. Leia na ordem.**
+> [!SUCCESS]
+> **Leia na ordem.** Os módulos foram sequenciados. "Manifesto" te prepara para "Arquitetura da UGP", que te prepara para "Níveis", que te prepara para "GitHub" e assim por diante. Pular pode funcionar, mas você perde conexões.
 
-Os módulos foram sequenciados. "Manifesto" te prepara para "Arquitetura da UGP", que te prepara para "Níveis", que te prepara para "GitHub" e assim por diante. Pular pode funcionar, mas você perde conexões.
+> [!SUCCESS]
+> **Não pule o "Porquê".** Cada módulo começa com a pergunta "por que isso existe". É a parte mais importante. As pessoas pulam para o código porque parece "prático". Mas o prático sem o porquê é frágil.
 
-**2. Não pule o "Porquê".**
+> [!SUCCESS]
+> **Faça os projetos em paralelo.** Depois de ler "GitHub", faça o Projeto 01. Aplique. Quebre. Volte a ler. **A teoria sem prática é entretenimento intelectual. A prática sem teoria é repetição cega.**
 
-Cada módulo começa com a pergunta "por que isso existe". Isso é a parte mais importante. As pessoas pulam para o código porque parece "prático". Mas o prático sem o porquê é frágil.
+> [!SUCCESS]
+> **Anote nos seus próprios termos.** Não precisa ser elaborado. Após cada módulo, escreva em 5 frases o que você entende. Se não conseguir, releia. Se ainda não conseguir, procure ajuda.
 
-**3. Faça os projetos em paralelo.**
+> [!SUCCESS]
+> **Devagar é mais rápido.** Você leu um módulo em 20 minutos e não entendeu nada? Releia em 1h. Ainda não? Em 1 dia. Demora mais agora, mas você não vai precisar reler daqui a 6 meses. Conteúdo lido rápido é conteúdo esquecido rápido.
 
-Depois de ler "GitHub", faça o Projeto 01. Aplique. Quebre. Volte a ler. A teoria sem prática é entretenimento intelectual. A prática sem teoria é repetição cega.
+### Como manter e escalar
 
-**4. Anote nos seus próprios termos.**
+> [!TIP]
+> **Releia módulos antigos quando avançar.** Quando você chegar ao nível Pleno 2, releia o módulo de GitHub. Você vai ver coisas que não viu na primeira leitura — porque seu nível mudou. O conteúdo mudou na sua cabeça, não no texto.
 
-Você não precisa fazer anotações elaboradas. Mas apos cada módulo, escreva em 5 frases o que você entende. Se não conseguir, releia. Se ainda não conseguir, procure ajuda.
+> [!TIP]
+> **Refatore projetos antigos com conhecimento novo.** O Projeto 01 (Todo List) vai parecer trivial quando você estiver no nível Pleno 1. Refatore com novos padrões. Isso consolida.
 
-**5. Devagar é mais rápido.**
+> [!TIP]
+> **Mentoreie alguém.** A melhor forma de consolidar é ensinar. Se um amigo começou na UGP, ajude-o. Explicar força você a organizar o conhecimento.
 
-Você leu um módulo em 20 minutos e não entendeu nada? Releia em 1h. Ainda não? Em 1 dia. Demora mais agora, mas você não vai precisar relevar daqui 6 meses. Conteúdo lido rápido é conteúdo esquecido rápido.
+> [!TIP]
+> **Contribua para open source.** Cada módulo te ensina algo que existe em projetos open source. Aplicar em projeto real (mesmo com PR pequeno) testa seu conhecimento fora da UGP.
 
-### Como manter
+> [!TIP]
+> **Escreva sobre o que aprendeu.** Você não precisa ser influencer. Mas escrever um README ou um post no LinkedIn sobre o que você entendeu é exercício pedagógico. Você descobre lacunas quando explica.
 
-**1. Releia módulos antigos quando avançar.**
+## Caso real de mercado
 
-Quando você chegar ao nível Pleno 2, releia o módulo de GitHub. Você vai ver coisas que não viu na primeira leitura — porque seu nível mudou. O conteúdo mudou na sua cabeça, não no texto.
+Toda empresa que constrói software sério tem, em algum nível, o que a UGP ensina.
 
-**2. Refatore projetos antigos com o conhecimento novo.**
+> [!REFERENCE]
+> **Git/GitHub** — nenhuma empresa moderna trabalha sem isso. Stripe, GitHub, Nubank, Spotify: todas têm fluxo de PR obrigatório.
 
-O Projeto 01 (Todo List) vai parecer trivial quando você estiver no nível Pleno 1. Refatore com novos padrões. Isso consolida.
+> [!REFERENCE]
+> **Documentação como código** — times maduros têm ADRs, READMEs, docs versionados. Google publica seu próprio livro "Software Engineering at Google" sobre processos em escala.
 
-### Como escalar
+> [!REFERENCE]
+> **Testes** — empresas como Nubank, Stripe e GitHub têm cobertura obrigatória. Sem teste, merge não passa.
 
-**1. Mentoreie alguém.**
+> [!REFERENCE]
+> **Arquitetura de decisão técnica** — todo time sênior documenta trade-offs. Quem não documenta, repele engenheiros bons.
 
-A melhor forma de consolidar é ensinar. Se um amigo começou na UGP, ajude-o. Explicar força você a organizar o conhecimento.
+> [!REFERENCE]
+> **Carreira estruturada** — empresas com trilhas de carreira técnicas (Google L3-L7, Spotify, Thoughtworks) têm níveis como os da UGP.
 
-**2. Contribua para open source.**
+### Empresas que tratam software como engenharia
 
-Cada módulo te ensina algo que existe em projetos open source. Aplicar em projeto real (mesmo com PR pequeno) testa seu conhecimento fora da UGP.
+Stripe. GitHub. Shopify. Nubank. Thoughtworks. Spotify. Netflix. Todas têm uma coisa em comum — **tratam software como engenharia, não como montagem de peças**.
 
-**3. Escreva sobre o que aprendeu.**
+> [!CAUTION]
+> Se você constrói um botão para um portfólio pessoal, pode pular tudo. Se você constrói um sistema de pagamentos, todo princípio que a UGP ensina é **existencial**. Sistemas críticos, com custo de bug alto, que precisam durar anos e mudam de mãos — são onde a diferença entre programador e engenheiro aparece.
 
-Você não precisa ser influencer. Mas escrever um README ou um post no LinkedIn sobre o que você entendeu é exercício pedagógico. Você descobre lacunas quando explica.
+## Resumo
 
-### Como testar seu conhecimento
+O que você aprendeu neste manifesto:
 
-**1. Tente explicar sem olhar.**
+- **Sintaxe é o alfabeto; engenharia é escrever o livro.** A diferença não está na linguagem, mas em decidir, prever trade-offs e assumir responsabilidade.
+- **Quatro eras nos trouxeram até aqui.** Autodidata (profundidade), cursos (acesso), bootcamps (estrutura), conteúdo rápido (descartável). A UGP herda o melhor de cada uma.
+- **Três pilares sustentam a UGP.** Conteúdo denso, projetos corporativos reais e progressão por níveis.
+- **Tutorial ensina "como"; UGP ensina "por quê".** A diferença aparece quando algo quebra em produção.
+- **Erros têm padrão por nível.** Iniciante pula teoria; intermediário troca stack; sênior não documenta decisão.
+- **O manifesto é para reler, não decorar.** Volte aqui quando estiver perdido ou motivado a desistir.
 
-Pós-módulo, feche a tela. Explique em voz alta para si mesmo. Se travar em algum ponto, esse é o ponto a revisar.
+> [!QUOTE]
+> "A diferença entre você e mais um milhão de programadores que só sabem sintaxe é o porquê."
 
-**2. Construa algo similar sem tutorial.**
+## Como isso aparece nos projetos da UGP
 
-Leu sobre TDD? Puxe um projeto e escreva testes sem seguir guia. Você vai descobrir o que realmente internalizou.
+Cada projeto da UGP aplica a tese central — aprender construindo, com teoria sustentando cada decisão.
 
-**3. Identifique as conexões.**
+> [!TIP]
+> **Projeto 07 — SaaS de Notas.** Você implementa autenticação real com Supabase Auth e RLS. Aqui a diferença entre "tutorial de login" e "entender JWT + cookies + stateless" fica óbvia.
 
-Conseguiu ligar o módulo de GitHub com o de Docs as Code? Quando conceitos começam a se conectar espontaneamente na sua cabeça, você está dominando.
+> [!TIP]
+> **Projeto 09 — LMS.** Plataforma de courses com progressão e testes. Aqui a progressão por níveis da UGP vira código — você constrói o mesmo modelo que está seguindo.
 
----
+> [!TIP]
+> **Projeto 10 — Clone do Supabase.** Arquitetura distribuída de verdade. Aqui todo trade-off que o manifesto defende é existencial — sem ADRs e sem entendimento, o projeto não sai do papel.
 
-## Mundo Real
+## Desafio
 
-### Onde isso aparece em empresas?
+> [!IMPORTANT]
+> Escolha um tutorial que você seguiu recentemente (de React, de login, de API, qualquer um) e responda, por escrito:
+>
+> 1. **Qual era o "como" que ele ensinou?** Resuma em 3 frases.
+> 2. **Quais perguntas "por quê" ele não respondeu?** Liste ao menos 3.
+> 3. **O que aconteceria se algo quebrasse em produção?** Descreva um cenário realista.
+> 4. **Como você defenderia tecnicamente a escolha feita?** Argumente com trade-offs, não com "o tutorial mandou".
+> 5. **Qual próximo passo da UGP preenche essa lacuna?** Aponte um módulo ou projeto.
 
-Toda empresa que constrói software sério tem, em algum nível, o que a UGP ensina:
+Não precisa acertar. O objetivo é treinar o olhar de engenheiro — enxergar as decisões que um tutorial esconde. Quando você conseguir fazer isso com qualquer vídeo de 10 minutos, terá entendido a tese central da UGP.
 
-- **Git/GitHub**: nenhuma empresa moderna trabalha sem isso
-- **Documentação como código**: times maduros têm ADRs, READMEs, docs versionados
-- **Testes**: empresas como Nubank, Stripe, GitHub têm cobertura obrigatória
-- **Arquitetura de decis técnico**: todo time seniores documenta trade-offs
-- **Carreira estruturada**: empresas com trilhas de carreira têm níveis como os da UGP
-
-### Quando você realmente vai usar?
-
-- **Git** — todos os dias, em qualquer emprego
-- **Design de API** — quando construir algo que outros times consomem
-- **Trade-offs de arquitetura** — quando seu sistema precisa escalar
-- **Testes** — quando um bug em produção te custa milhões
-- **Documentação** — quando você herdar código de alguém que saiu da empresa
-
-### Quais empresas utilizam esses princípios?
-
-Empresas com cultura de engenharia forte: Stripe, GitHub, Shopify, Nubank, Thoughtworks, Spotify, Netflix. Todas têm uma coisa em comum — **tratam software como engenharia, não como montagem de peças**.
-
-### Que tipo de sistema depende disso?
-
-Sistemas críticos. Sistemas onde o custo de um bug é alto. Sistemas que precisam durar anos. Sistemas que mudam de mãos —多人 que escreve código hoje não é quem vai manter amanhã.
-
-Se você constrói um botão para um portfólio pessoal, você pode pular tudo. Se você constrói um sistema de pagamentos, todo princípio que a UGP ensina é existencial.
-
----
-
-## Conexão com a UGP
-
-Depois deste manifesto, você tem a base conceitual para entender:
-
-- **Por que a UGP é estruturada desta forma** (próximo módulo: Arquitetura da UGP)
-- **Como funciona a progressão** (módulo: Níveis)
-- **O que cada nível exige de você** (módulo: Matriz)
-
-Recomendamos a sequência exata:
-
-1. **Arquitetura da UGP** — entenda a estrutura técnica da plataforma
-2. **Níveis** — veja o mapa completo da sua jornada
-3. **Matriz** — visualize os 8 níveis e onde você está
-
-E quando terminar os fundamentos, comece pelos módulos de Engenharia. **GitHub** é o primeiro — porque antes de escrever código, você precisa saber como colaborar nele.
-
-> Este manifesto não é para você decorar. É para você reler quando estiver perdido.
-
-Quando um projeto estiver difícil, quando você quiser desistir de um módulo, quando perguntar "por que preciso saber isso?" — volte aqui. A resposta é a mesma: **porque diferirão entre você e mais um milhão de programadores que só sabem sintaxe é o porquê.**
-
-Bem-vindo à UGP.
+Bem-vindo.

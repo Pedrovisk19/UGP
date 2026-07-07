@@ -16,7 +16,8 @@ import { getQuizStats, saveQuizAttempt } from '@/actions/quiz.actions'
 
 import { ReadingProgress } from '@/components/module/ReadingProgress'
 import { ModuleHero } from '@/components/module/ModuleHero'
-import { TableOfContents } from '@/components/module/TableOfContents'
+import { LearningNavigator } from '@/components/module/LearningNavigator'
+import { ModuleMission, Prerequisites, Connections, ModuleCompletionCard } from '@/components/module/ModuleSections'
 import { SummaryCards } from '@/components/module/SummaryCards'
 import { LearningChecklist } from '@/components/module/LearningChecklist'
 import { NextModule } from '@/components/module/NextModule'
@@ -105,6 +106,11 @@ function ModuleView({ slug, content, completed, onToggleProgress, toggling }: Mo
   const [bestPercentage, setBestPercentage] = React.useState<number | null>(null)
   const [attempts, setAttempts] = React.useState(0)
   const [saving, setSaving] = React.useState(false)
+  const [allRead, setAllRead] = React.useState(false)
+
+  React.useEffect(() => {
+    setAllRead(false)
+  }, [slug])
 
   React.useEffect(() => {
     let active = true
@@ -155,6 +161,14 @@ function ModuleView({ slug, content, completed, onToggleProgress, toggling }: Mo
           </header>
         )}
 
+        {meta?.mission && meta.mission.length > 0 && (
+          <ModuleMission items={meta.mission} />
+        )}
+
+        {meta?.prerequisites && meta.prerequisites.length > 0 && (
+          <Prerequisites items={meta.prerequisites} />
+        )}
+
         {phase === 'content' ? (
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_240px]">
             {/* Conteúdo principal */}
@@ -171,6 +185,13 @@ function ModuleView({ slug, content, completed, onToggleProgress, toggling }: Mo
                 </div>
               )}
 
+              {/* Connections */}
+              {meta?.connections && meta.connections.length > 0 && (
+                <div className="mt-10">
+                  <Connections items={meta.connections} />
+                </div>
+              )}
+
               {/* Checklist */}
               {meta && meta.checklist.length > 0 && (
                 <div className="mt-12">
@@ -182,6 +203,16 @@ function ModuleView({ slug, content, completed, onToggleProgress, toggling }: Mo
               {quiz.length > 0 && (
                 <div className="mt-12">
                   <QuizPreview onStart={() => setPhase('quiz')} questionCount={quiz.length} bestPercentage={bestPercentage} attempts={attempts} saving={saving} />
+                </div>
+              )}
+
+              {/* Completion card — celebrado quando todas as seções foram lidas */}
+              {meta && (allRead || completed) && (
+                <div className="mt-12">
+                  <ModuleCompletionCard
+                    competencies={meta.competencies ?? []}
+                    nextStep={meta.nextSteps[0] ?? null}
+                  />
                 </div>
               )}
 
@@ -222,10 +253,15 @@ function ModuleView({ slug, content, completed, onToggleProgress, toggling }: Mo
               </footer>
             </article>
 
-            {/* Sticky TOC desktop */}
+            {/* Sticky Learning Navigator (desktop) */}
             <aside className="hidden lg:block">
               <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
-                <TableOfContents items={toc} />
+                <LearningNavigator
+                  moduleId={slug}
+                  items={toc}
+                  readingTime={meta?.readingTime ?? estimateReadingTime(content.body)}
+                  onAllRead={() => setAllRead(true)}
+                />
               </div>
             </aside>
           </div>
