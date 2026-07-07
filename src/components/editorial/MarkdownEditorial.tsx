@@ -86,33 +86,31 @@ export function MarkdownEditorial({ source }: { source: string }) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          code({ inline, className, children, ...props }: any) {
-            const text = String(children ?? '')
+          code({ className, children, ...props }: any) {
+            const text = String(children ?? '').replace(/\n$/, '')
             const match = /language-(\w+)/.exec(className || '')
             const lang = match?.[1]
-            const isFenced = !inline && !!lang
-            if (isFenced) {
-              if (lang === 'mermaid') {
-                return <MermaidDiagram chart={text} />
-              }
-              return <CodeBlock language={lang}>{text}</CodeBlock>
+            // react-markdown v9 removeu o prop `inline`. Heurística:
+            // bloco = tem fence language OU contém quebra de linha.
+            const isBlock = !!lang || text.includes('\n')
+            if (isBlock) {
+              if (lang === 'mermaid') return <MermaidDiagram chart={text} />
+              if (lang) return <CodeBlock language={lang}>{text}</CodeBlock>
+              return <CodeBlock language="text">{text}</CodeBlock>
             }
-            if (inline) {
-              return (
-                <code
-                  className="px-1 py-0.5 rounded text-[13px] font-mono"
-                  style={{
-                    background: 'rgba(139,92,246,0.1)',
-                    border: '1px solid rgba(139,92,246,0.2)',
-                    color: '#c4b5fd',
-                  }}
-                  {...props}
-                >
-                  {children}
-                </code>
-              )
-            }
-            return <CodeBlock language="text">{text}</CodeBlock>
+            return (
+              <code
+                className="px-1 py-0.5 rounded text-[13px] font-mono"
+                style={{
+                  background: 'rgba(139,92,246,0.1)',
+                  border: '1px solid rgba(139,92,246,0.2)',
+                  color: '#c4b5fd',
+                }}
+                {...props}
+              >
+                {children}
+              </code>
+            )
           },
           pre({ children }: { children?: React.ReactNode }) {
             return <>{children}</>

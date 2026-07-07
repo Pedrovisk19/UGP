@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { Menu, X, CheckCircle2, Circle, FolderGit2, ChevronDown, LogOut } from 'lucide-react'
 import { NAV_TREE, PROJECTS } from '@/lib/ugpContent'
 import { signOut } from '@/actions/auth.actions'
@@ -18,9 +19,12 @@ export function MobileNav({
 }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [groups, setGroups] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(NAV_TREE.map((g, i) => [g.label, i === 0]))
   )
+
+  useEffect(() => setMounted(true), [])
 
   function toggle(key: string) {
     setGroups((g) => ({ ...g, [key]: !g[key] }))
@@ -40,8 +44,8 @@ export function MobileNav({
         <Menu className="h-5 w-5" />
       </button>
 
-      {open && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+      {open && mounted && createPortal(
+        <div className="fixed inset-0 z-[100] lg:hidden">
           <div
             className="absolute inset-0 bg-black/70 backdrop-blur-sm"
             onClick={() => setOpen(false)}
@@ -164,7 +168,8 @@ export function MobileNav({
               </button>
             </div>
           </aside>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   )
